@@ -51,7 +51,7 @@ nav {
   height: 100%;
   display: flex; align-items: center; justify-content: space-between;
 }
-.nav-logo { height: 44px; width: auto; object-fit: contain; }
+.nav-logo { height: 56px; width: auto; object-fit: contain; }
 .nav-pill {
   background: var(--brand-primary); color: #fff;
   font-family: var(--font-body); font-size: 11px; font-weight: 700;
@@ -327,6 +327,107 @@ nav {
 .tlist li { font-size: 13px; color: var(--brand-muted); padding-left: 16px; position: relative; line-height: 1.6; }
 .tlist li::before { content: '◆'; position: absolute; left: 0; color: var(--brand-primary); font-size: 8px; top: 5px; }
 
+
+/* ── GALLERY SLIDER ── */
+.gal-slider-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0 -24px;
+}
+.gal-slider {
+  display: flex;
+  overflow: hidden;
+  gap: 12px;
+  padding: 8px 24px;
+  scroll-behavior: smooth;
+  flex: 1;
+  /* hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.gal-slider::-webkit-scrollbar { display: none; }
+
+.gal-slide {
+  flex: 0 0 calc(33.333% - 8px);
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #0a3a42;
+}
+.gal-slide:hover { transform: scale(1.03); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+.gal-slide img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.gal-slide:hover img { transform: scale(1.08); }
+.gal-cap {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(5,42,48,0.9) 0%, transparent 100%);
+  backdrop-filter: blur(2px);
+  padding: 24px 12px 10px;
+  font-size: 11px; font-weight: 700;
+  color: #fff; letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+/* ARROWS */
+.gal-arrow {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(36,251,170,0.15);
+  border: 1.5px solid rgba(36,251,170,0.4);
+  color: var(--brand-accent);
+  font-size: 28px; line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 2;
+  margin: 0 4px;
+}
+.gal-arrow:hover {
+  background: var(--brand-accent);
+  color: var(--brand-dark);
+  transform: scale(1.1);
+}
+
+/* DOTS */
+.gal-dots {
+  display: flex; justify-content: center;
+  gap: 6px; margin-top: 16px;
+}
+.gal-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.gal-dot.active {
+  background: var(--brand-accent);
+  transform: scale(1.3);
+}
+
+/* Mobile: show 1 at a time */
+@media (max-width: 600px) {
+  .gal-slide { flex: 0 0 calc(85% - 8px); }
+  .gal-arrow { width: 36px; height: 36px; font-size: 22px; }
+}
+
+/* Tablet: show 2 */
+@media (min-width: 601px) and (max-width: 1023px) {
+  .gal-slide { flex: 0 0 calc(50% - 8px); }
+}
+
+/* Desktop: show 3 */
+@media (min-width: 1024px) {
+  .gal-slide { flex: 0 0 calc(33.333% - 8px); }
+}
+
 /* ── LIGHTBOX ── */
 .lb { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,.96); flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
 .lb.open { display: flex; }
@@ -340,7 +441,7 @@ nav {
 
 /* ── FOOTER ── */
 footer { text-align: center; padding: 40px 20px 72px; border-top: 1px solid var(--brand-border); background: #fff; }
-.footer-logo { height: 48px; width: auto; object-fit: contain; margin: 0 auto 16px; }
+.footer-logo { height: 64px; width: auto; object-fit: contain; margin: 0 auto 16px; }
 footer p { font-size: 11px; letter-spacing: .12em; color: var(--brand-muted); font-weight: 600; line-height: 2.2; }
 footer a { color: var(--brand-primary); font-weight: 700; text-decoration: none; }
 
@@ -633,22 +734,29 @@ footer a { color: var(--brand-primary); font-weight: 700; text-decoration: none;
 <div class="sc">
   <div class="slbl">✨ The Vibe</div>
   <div class="sh">Strangers<br><span class="c">Becoming Squad.</span></div>
-  <div class="gal-grid">
-    <div class="gc tall" onclick="openGallery('gal',0)"><img src="g1.jpg" alt="Squad"/><div class="gl">Squad Goals</div></div>
-    <div style="display:flex;flex-direction:column;gap:6px">
-      <div class="gc" onclick="openGallery('gal',1)"><img src="g2.jpg" alt="Chai"/><div class="gl">Night Chai ☕</div></div>
-      <div class="gc" onclick="openGallery('gal',2)"><img src="g3.jpg" alt="Lakeside"/><div class="gl">Lakeside Chill</div></div>
+
+  <!-- SLIDER WRAPPER -->
+  <div class="gal-slider-wrap">
+    <button class="gal-arrow gal-prev" onclick="galMove(-1)">&#8249;</button>
+    <div class="gal-slider" id="galSlider">
+      <div class="gal-slide" onclick="openGallery('gal',0)"><img src="g1.jpg" alt="Squad"/><div class="gal-cap">Squad Goals</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',1)"><img src="g2.jpg" alt="Chai"/><div class="gal-cap">Night Chai ☕</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',2)"><img src="g3.jpg" alt="Lakeside"/><div class="gal-cap">Lakeside Chill</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',3)"><img src="g4.jpg" alt="Coconut"/><div class="gal-cap">Coconut 🥥</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',4)"><img src="g5.png" alt="Market"/><div class="gal-cap">Local Market</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',5)"><img src="g6.png" alt="Bangla"/><div class="gal-cap">Bangla Nights</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',6)"><img src="g7.jpg" alt="Neon"/><div class="gal-cap">Neon Streets</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',7)"><img src="g8.jpg" alt="Beach"/><div class="gal-cap">Beach Café ☀️</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',8)"><img src="g9.jpg" alt="Phi Phi"/><div class="gal-cap">Phi Phi Paradise 🏝️</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',9)"><img src="g10.jpg" alt="Bangla girl"/><div class="gal-cap">Bangla Road 🔴</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',10)"><img src="g11.jpg" alt="Jungceylon"/><div class="gal-cap">Jungceylon Night</div></div>
     </div>
-    <div class="gc" onclick="openGallery('gal',3)"><img src="g4.jpg" alt="Coconut"/><div class="gl">Coconut 🥥</div></div>
-    <div class="gc" onclick="openGallery('gal',4)"><img src="g5.png" alt="Market"/><div class="gl">Local Market</div></div>
-    <div class="gc" onclick="openGallery('gal',5)"><img src="g6.png" alt="Bangla"/><div class="gl">Bangla Nights</div></div>
-    <div class="gc" onclick="openGallery('gal',6)"><img src="g7.jpg" alt="Neon"/><div class="gl">Neon Streets</div></div>
-    <div class="gc" onclick="openGallery('gal',7)"><img src="g8.jpg" alt="Beach"/><div class="gl">Beach Café ☀️</div></div>
-    <div class="gc gal-big wide" onclick="openGallery('gal',8)"><img src="g9.jpg" alt="Phi Phi"/><div class="gl">Phi Phi Paradise 🏝️</div></div>
-    <div class="gc" onclick="openGallery('gal',9)"><img src="g10.jpg" alt="Bangla girl"/><div class="gl">Bangla Road 🔴</div></div>
-    <div class="gc" onclick="openGallery('gal',10)"><img src="g11.jpg" alt="Jungceylon"/><div class="gl">Jungceylon Night</div></div>
+    <button class="gal-arrow gal-next" onclick="galMove(1)">&#8250;</button>
   </div>
-  <div class="hint">👆 Tap any photo · Swipe to browse</div>
+
+  <!-- DOTS -->
+  <div class="gal-dots" id="galDots"></div>
+  <div class="hint">👆 Tap photo to view fullscreen · Swipe or use arrows</div>
 </div>
 </div>
 
@@ -777,6 +885,53 @@ seats.forEach(function(s){
     setTimeout(function(){el.textContent=s.v;if(b)b.textContent=s.v;el.classList.remove('flip');},300);
   },s.d);
 });
+
+// ── Gallery Slider ──
+var galIndex = 0;
+var galSlider = document.getElementById('galSlider');
+var galSlides = galSlider ? galSlider.querySelectorAll('.gal-slide') : [];
+var galDotsEl = document.getElementById('galDots');
+var visibleCount = window.innerWidth < 600 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+
+// Build dots
+if (galDotsEl) {
+  galSlides.forEach(function(_, i) {
+    var dot = document.createElement('div');
+    dot.className = 'gal-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = function() { galGoTo(i); };
+    galDotsEl.appendChild(dot);
+  });
+}
+
+function galGetVisible() {
+  return window.innerWidth < 600 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+}
+
+function galGoTo(idx) {
+  var vis = galGetVisible();
+  var max = galSlides.length - vis;
+  galIndex = Math.max(0, Math.min(idx, max));
+  var slideW = galSlides[0] ? galSlides[0].offsetWidth + 12 : 0;
+  galSlider.scrollLeft = galIndex * slideW;
+  // update dots
+  var dots = galDotsEl ? galDotsEl.querySelectorAll('.gal-dot') : [];
+  dots.forEach(function(d, i) { d.classList.toggle('active', i === galIndex); });
+}
+
+function galMove(dir) { galGoTo(galIndex + dir); }
+
+// Touch swipe on slider
+var galStartX = 0;
+if (galSlider) {
+  galSlider.addEventListener('touchstart', function(e) { galStartX = e.touches[0].clientX; }, {passive:true});
+  galSlider.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - galStartX;
+    if (Math.abs(dx) > 40) galMove(dx < 0 ? 1 : -1);
+  }, {passive:true});
+}
+
+window.addEventListener('resize', function() { galGoTo(galIndex); });
+
 </script>
 </body>
 </html>
