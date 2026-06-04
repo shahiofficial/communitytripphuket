@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KairaliTrails · Community Trips 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Poppins',sans-serif}
+body{
+  background:linear-gradient(150deg,#041f24 0%,#073038 50%,#0a4050 100%);
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:24px 20px 40px;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 90%,rgba(4,150,165,0.2) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 40% at 90% 10%,rgba(36,251,170,0.1) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+}
+.wrap{position:relative;z-index:1;width:100%;max-width:760px}
+
+/* LOGO */
+.logo-area{text-align:center;margin-bottom:32px}
+.logo-img{height:60px;width:auto;object-fit:contain;margin:0 auto 12px;display:block}
+.logo-tagline{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.2em;text-transform:uppercase}
+
+/* HEADING */
+.heading{
+  font-weight:800;font-size:clamp(28px,7vw,48px);
+  color:#fff;text-align:center;
+  margin-bottom:8px;letter-spacing:-1px;line-height:1;
+}
+.heading .accent{color:#24fbaa}
+.subheading{
+  font-size:14px;color:rgba(255,255,255,0.4);
+  text-align:center;margin-bottom:40px;letter-spacing:0.05em;
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:20px;overflow:hidden;
+  text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;
+  transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;
+  cursor:pointer;
+}
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(36,251,170,0.45);
+  box-shadow:0 16px 40px rgba(0,0,0,0.35);
+}
+.card-cover{
+  width:100%;height:180px;
+  object-fit:cover;display:block;
+  background:#0a3a42;
+}
+.card-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.card-badge{
+  display:inline-block;
+  font-size:9px;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;color:#24fbaa;
+  background:rgba(36,251,170,0.1);
+  border:1px solid rgba(36,251,170,0.25);
+  border-radius:100px;padding:3px 12px;
+  margin-bottom:10px;width:fit-content;
+}
+.card-title{
+  font-weight:800;font-size:clamp(18px,4vw,24px);
+  color:#fff;margin-bottom:4px;line-height:1.05;
+  letter-spacing:-0.5px;
+}
+.card-dates{
+  font-size:12px;color:rgba(255,255,255,0.45);
+  margin-bottom:14px;display:flex;align-items:center;gap:6px;
+}
+.card-price{
+  font-weight:800;font-size:clamp(24px,5vw,32px);
+  color:#f3792a;line-height:1;letter-spacing:-1px;
+  margin-bottom:4px;
+}
+.card-price-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:16px}
+.card-highlights{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:20px;flex:1}
+.card-highlights li{
+  font-size:12px;color:rgba(255,255,255,0.55);
+  padding-left:14px;position:relative;line-height:1.4;
+}
+.card-highlights li::before{
+  content:'→';position:absolute;left:0;
+  color:#12b5c9;font-size:11px;
+}
+.card-btn{
+  display:block;width:100%;
+  background:#0496a5;color:#fff;
+  font-family:'Poppins',sans-serif;
+  font-size:12px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:12px;border-radius:100px;
+  border:none;cursor:pointer;
+  transition:background 0.2s;
+  text-decoration:none;text-align:center;
+}
+.card-btn:hover{background:#12b5c9}
+
+/* FOOTER */
+.footer{
+  text-align:center;margin-top:32px;
+  font-size:11px;color:rgba(255,255,255,0.2);
+  letter-spacing:0.12em;
+}
+.footer a{color:rgba(4,150,165,0.7);text-decoration:none}
+
+@media(max-width:540px){
+  .cards{grid-template-columns:1fr}
+  .card-cover{height:200px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- LOGO -->
+  <div class="logo-area">
+    <img class="logo-img" src="logo.png" alt="KairaliTrails"/>
+    <div class="logo-tagline">Community Trips · Phuket 2026</div>
+  </div>
+
+  <!-- HEADING -->
+  <div class="heading">Choose Your <span class="accent">Adventure</span></div>
+  <div class="subheading">Two epic Phuket packages — pick your dates & book your spot</div>
+
+  <!-- CARDS -->
+  <div class="cards">
+
+    <!-- JULY — PHUKET SQUAD -->
+    <a class="card" href="july/index.html">
+      <img class="card-cover" src="july/hotel_pool.png" alt="Phuket Squad"/>
+      <div class="card-body">
+        <div class="card-badge">🌴 GenZ Community Trip</div>
+        <div class="card-title">Phuket Squad</div>
+        <div class="card-dates">✈️ July 7–11, 2026 &nbsp;·&nbsp; 4N / 5D</div>
+        <div class="card-price">₹53,000</div>
+        <div class="card-price-sub">per person · all inclusive</div>
+        <ul class="card-highlights">
+          <li>Direct flight BLR ↔ Phuket</li>
+          <li>Island hopping · Phi Phi tour</li>
+          <li>Adventure day · ATV & Rafting</li>
+          <li>Nightlife guide · Bangla Road</li>
+          <li>Only 16 members</li>
+        </ul>
+        <span class="card-btn">View Package →</span>
+      </div>
+    </a>
+
+    <!-- AUGUST — ISLAND RUSH -->
+    <a class="card" href="august/island-rush.html">
+      <img class="card-cover" src="august/cover.jpg" alt="Island Rush"/>
+      <div class="card-body">
+        <div class="card-badge">🏝️ Family & All Ages</div>
+        <div class="card-title">Island Rush</div>
+        <div class="card-dates">✈️ Aug 2–6, 2026 &nbsp;·&nbsp; 4N / 5D</div>
+        <div class="card-price">₹55,000</div>
+        <div class="card-price-sub">per person · all inclusive</div>
+        <ul class="card-highlights">
+          <li>Direct flight BLR ↔ Phuket</li>
+          <li>Phi Phi Island · 7 islands</li>
+          <li>City tour · Tiger Kingdom</li>
+          <li>Add-on options available</li>
+          <li>All age groups welcome</li>
+        </ul>
+        <span class="card-btn">View Package →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <a href="https://www.kairalitrails.com" target="_blank">www.kairalitrails.com</a>
+    &nbsp;·&nbsp; Phuket 2026
+  </div>
+
+</div>
+</body>
+</html>
