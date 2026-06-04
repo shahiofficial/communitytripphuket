@@ -3,193 +3,862 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>KairaliTrails · Community Trips 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<title>Phuket Squad 2026 | Kairalitrails</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
 <style>
+/* ── BRAND TOKENS from kairalitrails.com ── */
+:root {
+  --p:#0496a5;        /* brand primary teal */
+  --pl:#12b5c9;       /* primary light */
+  --pd:#037a87;       /* primary dark */
+  --a:#24fbaa;        /* accent green */
+  --or:#f3792a;       /* orange CTA */
+  --dk:#052a30;       /* dark bg */
+  --tx:#0d3b43;       /* body text */
+  --mu:#5a9aa5;       /* muted text */
+  --bd:rgba(4,150,165,0.15);
+  --sh:0 4px 24px rgba(4,150,165,0.12);
+  --wh:#ffffff;
+  --off:#f4fcfd;
+  --font:'Poppins',sans-serif;
+  --r-sm:8px; --r-md:16px; --r-lg:24px;
+  --max:1200px;
+  --pad:clamp(20px,5vw,80px);
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;font-family:'Poppins',sans-serif}
-body{
-  background:linear-gradient(150deg,#041f24 0%,#073038 50%,#0a4050 100%);
-  min-height:100vh;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:24px 20px 40px;
+html{scroll-behavior:smooth}
+body{background:var(--off);color:var(--tx);font-family:var(--font);overflow-x:hidden;line-height:1.6;font-size:15px}
+img{display:block;max-width:100%}
+a{text-decoration:none}
+
+/* ══════════════════════════════
+   NAV
+══════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:2.5px solid var(--p);
+  box-shadow:0 2px 20px rgba(4,150,165,0.12);
+  height:72px;
 }
-body::before{
-  content:'';position:fixed;inset:0;
+.nav-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:0 var(--pad);height:100%;
+  display:flex;align-items:center;justify-content:space-between;
+}
+/* LOGO FIX: fixed height, auto width, contain aspect ratio */
+.nav-logo{
+  height:56px;
+  width:auto;
+  object-fit:contain;
+  display:block;
+}
+.nav-pill{
+  background:var(--p);color:#fff;
+  font-family:var(--font);font-size:11px;font-weight:700;
+  letter-spacing:0.12em;padding:9px 22px;
+  border-radius:100px;text-transform:uppercase;
+  white-space:nowrap;
+}
+
+/* ══════════════════════════════
+   SEAT BAR
+══════════════════════════════ */
+.seat-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:199;
+  background:var(--dk);
+  padding:10px 20px;min-height:54px;
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+  box-shadow:0 -4px 24px rgba(0,0,0,0.3);
+}
+.pulse{width:9px;height:9px;border-radius:50%;background:#ff4d4d;flex-shrink:0;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+.st{color:rgba(255,255,255,0.7);font-size:13px;font-weight:500;white-space:nowrap}
+.sn{font-family:var(--font);font-size:26px;font-weight:800;color:var(--a);line-height:1;transition:transform .3s,opacity .3s}
+.sn.flip{transform:translateY(-6px);opacity:0}
+.su{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:.1em;font-weight:600}
+.bk-btn{background:var(--or);color:#fff;font-size:12px;font-weight:700;padding:10px 20px;border-radius:100px;white-space:nowrap;transition:opacity .2s}
+.bk-btn:hover{opacity:.88}
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+.hero{
+  min-height:100vh;padding-top:72px;padding-bottom:72px;
+  background:linear-gradient(150deg,#041f24 0%,#073038 45%,#0a4050 100%);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 60% 50% at 10% 90%,rgba(4,150,165,0.2) 0%,transparent 65%),
-    radial-gradient(ellipse 50% 40% at 90% 10%,rgba(36,251,170,0.1) 0%,transparent 60%);
-  pointer-events:none;z-index:0;
+    radial-gradient(ellipse 70% 60% at 5% 95%,rgba(4,150,165,.28) 0%,transparent 65%),
+    radial-gradient(ellipse 55% 45% at 95% 5%,rgba(36,251,170,.12) 0%,transparent 60%);
+  pointer-events:none;
 }
-.wrap{position:relative;z-index:1;width:100%;max-width:760px}
+.hero-inner{
+  position:relative;z-index:1;
+  max-width:var(--max);margin:0 auto;width:100%;
+  padding:48px var(--pad) 32px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1.5px solid rgba(36,251,170,.38);border-radius:100px;
+  padding:8px 20px;font-size:11px;font-weight:600;
+  letter-spacing:.14em;color:var(--a);text-transform:uppercase;
+  margin-bottom:32px;
+}
+.hero-title{
+  font-family:var(--font);font-weight:800;
+  font-size:clamp(68px,16vw,152px);
+  line-height:.86;color:#fff;letter-spacing:-2px;
+  margin-bottom:6px;
+}
+.hero-title .ta{color:var(--a)}
+.hero-title .tb{-webkit-text-stroke:2px rgba(255,255,255,.22);color:transparent}
+.hero-year{
+  font-family:var(--font);font-weight:800;
+  font-size:clamp(26px,7vw,60px);
+  color:rgba(255,255,255,.15);letter-spacing:.1em;
+  margin-bottom:36px;
+}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+  border-radius:100px;padding:9px 18px;
+  font-size:13px;font-weight:500;color:rgba(255,255,255,.85);
+}
+.hero-tag b{color:#fff;font-weight:700}
+.hero-price-label{font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--mu);text-transform:uppercase;margin-bottom:4px}
+.hero-price{
+  font-family:var(--font);font-weight:800;
+  font-size:clamp(54px,13vw,100px);
+  color:var(--or);line-height:1;letter-spacing:-2px;
+}
 
-/* LOGO */
-.logo-area{text-align:center;margin-bottom:32px}
-.logo-img{height:60px;width:auto;object-fit:contain;margin:0 auto 12px;display:block}
-.logo-tagline{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.2em;text-transform:uppercase}
+/* ══════════════════════════════
+   SECTION SYSTEM
+══════════════════════════════ */
+.sw{width:100%}
+.sw.wh{background:var(--wh)}
+.sw.dk{background:var(--dk)}
+.sw.off{background:var(--off)}
+.sc{max-width:var(--max);margin:0 auto;width:100%;padding:64px var(--pad)}
 
-/* HEADING */
-.heading{
-  font-weight:800;font-size:clamp(28px,7vw,48px);
-  color:#fff;text-align:center;
-  margin-bottom:8px;letter-spacing:-1px;line-height:1;
+.slbl{
+  font-size:11px;font-weight:700;letter-spacing:.2em;
+  color:var(--p);text-transform:uppercase;
+  display:flex;align-items:center;gap:12px;margin-bottom:16px;
 }
-.heading .accent{color:#24fbaa}
-.subheading{
-  font-size:14px;color:rgba(255,255,255,0.4);
-  text-align:center;margin-bottom:40px;letter-spacing:0.05em;
+.slbl::after{content:'';flex:1;height:1px;background:rgba(4,150,165,.2)}
+.sw.dk .slbl{color:var(--a)}
+.sw.dk .slbl::after{background:rgba(36,251,170,.18)}
+
+.sh{
+  font-family:var(--font);font-weight:800;
+  font-size:clamp(38px,8vw,68px);
+  line-height:.92;margin-bottom:32px;
+  letter-spacing:-1px;color:var(--dk);
+}
+.sw.dk .sh{color:#fff}
+.sh .c{color:var(--pl)}
+.sw.dk .sh .c{color:var(--a)}
+.hint{text-align:center;color:var(--mu);font-size:12px;margin-top:12px;letter-spacing:.04em}
+.sw.dk .hint{color:rgba(255,255,255,.3)}
+
+/* ══════════════════════════════
+   HOTEL
+══════════════════════════════ */
+.hotel-wrap{display:grid;grid-template-rows:auto auto;gap:12px}
+.hotel-main{
+  border-radius:var(--r-md);overflow:hidden;
+  position:relative;height:260px;cursor:pointer;background:#cde8ec;
+}
+.hotel-sub{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hotel-card{
+  border-radius:var(--r-md);overflow:hidden;
+  position:relative;height:180px;cursor:pointer;background:#cde8ec;
+}
+.hotel-main img,.hotel-card img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.hotel-main:hover img,.hotel-card:hover img{transform:scale(1.04)}
+.itag{
+  position:absolute;bottom:12px;left:12px;
+  background:rgba(255,255,255,.95);
+  border-radius:100px;padding:5px 14px;
+  font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--dk);
+  border:1px solid rgba(4,150,165,.15);
+}
+.perks{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.perk{
+  background:#fff;border:1.5px solid var(--bd);
+  border-radius:100px;padding:9px 16px;
+  font-size:13px;font-weight:600;color:var(--dk);
+  box-shadow:var(--sh);
 }
 
-/* CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
+/* ══════════════════════════════
+   INCLUDES GRID
+══════════════════════════════ */
+.inc-grid{display:grid;grid-template-columns:1fr;gap:3px}
+.inc-card{
+  background:#fff;padding:20px 18px;
+  display:flex;align-items:flex-start;gap:14px;
+  box-shadow:0 1px 4px rgba(0,0,0,.04);border-radius:4px;
 }
-.card{
-  background:rgba(255,255,255,0.05);
-  border:1.5px solid rgba(255,255,255,0.1);
-  border-radius:20px;overflow:hidden;
-  text-decoration:none;color:inherit;
-  display:flex;flex-direction:column;
-  transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;
-  cursor:pointer;
-}
-.card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(36,251,170,0.45);
-  box-shadow:0 16px 40px rgba(0,0,0,0.35);
-}
-.card-cover{
-  width:100%;height:180px;
-  object-fit:cover;display:block;
-  background:#0a3a42;
-}
-.card-body{padding:20px;flex:1;display:flex;flex-direction:column}
-.card-badge{
-  display:inline-block;
-  font-size:9px;font-weight:700;letter-spacing:0.14em;
-  text-transform:uppercase;color:#24fbaa;
-  background:rgba(36,251,170,0.1);
-  border:1px solid rgba(36,251,170,0.25);
-  border-radius:100px;padding:3px 12px;
-  margin-bottom:10px;width:fit-content;
-}
-.card-title{
-  font-weight:800;font-size:clamp(18px,4vw,24px);
-  color:#fff;margin-bottom:4px;line-height:1.05;
-  letter-spacing:-0.5px;
-}
-.card-dates{
-  font-size:12px;color:rgba(255,255,255,0.45);
-  margin-bottom:14px;display:flex;align-items:center;gap:6px;
-}
-.card-price{
-  font-weight:800;font-size:clamp(24px,5vw,32px);
-  color:#f3792a;line-height:1;letter-spacing:-1px;
-  margin-bottom:4px;
-}
-.card-price-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:16px}
-.card-highlights{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:20px;flex:1}
-.card-highlights li{
-  font-size:12px;color:rgba(255,255,255,0.55);
-  padding-left:14px;position:relative;line-height:1.4;
-}
-.card-highlights li::before{
-  content:'→';position:absolute;left:0;
-  color:#12b5c9;font-size:11px;
-}
-.card-btn{
-  display:block;width:100%;
-  background:#0496a5;color:#fff;
-  font-family:'Poppins',sans-serif;
-  font-size:12px;font-weight:700;
-  letter-spacing:0.1em;text-transform:uppercase;
-  padding:12px;border-radius:100px;
-  border:none;cursor:pointer;
-  transition:background 0.2s;
-  text-decoration:none;text-align:center;
-}
-.card-btn:hover{background:#12b5c9}
+.inc-card:first-child{border-radius:var(--r-md) var(--r-md) 4px 4px}
+.inc-card:last-child{border-radius:4px 4px var(--r-md) var(--r-md)}
+.inc-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.inc-card h3{font-size:14px;font-weight:700;color:var(--dk);margin-bottom:3px}
+.inc-card p{font-size:13px;color:var(--mu);line-height:1.5}
 
-/* FOOTER */
-.footer{
-  text-align:center;margin-top:32px;
-  font-size:11px;color:rgba(255,255,255,0.2);
-  letter-spacing:0.12em;
+/* ══════════════════════════════
+   MEALS
+══════════════════════════════ */
+.meal-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.meal-badge{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(36,251,170,.2);
+  border-radius:var(--r-md);padding:28px 20px;text-align:center;
 }
-.footer a{color:rgba(4,150,165,0.7);text-decoration:none}
+.meal-num{font-weight:800;font-size:72px;color:var(--a);line-height:1}
+.meal-badge h3{font-size:15px;font-weight:700;color:#fff;margin-top:8px}
+.meal-badge p{font-size:12px;color:rgba(255,255,255,.4);margin-top:3px}
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.food-card{border-radius:var(--r-sm);overflow:hidden;position:relative;aspect-ratio:1;cursor:pointer}
+.food-card img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.food-card:hover img{transform:scale(1.06)}
+.food-lbl{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(5,42,48,.9),transparent);
+  padding:22px 10px 9px;font-size:10px;font-weight:700;
+  color:#fff;letter-spacing:.08em;text-transform:uppercase;
+}
 
-@media(max-width:540px){
-  .cards{grid-template-columns:1fr}
-  .card-cover{height:200px}
+/* ══════════════════════════════
+   ITINERARY
+══════════════════════════════ */
+.day-list{display:flex;flex-direction:column}
+.day-item{padding:24px 0;border-bottom:1px solid var(--bd);display:flex;gap:16px;align-items:flex-start}
+.day-item:last-child{border-bottom:none}
+.day-circle{
+  width:52px;height:52px;border-radius:50%;flex-shrink:0;
+  border:2px solid var(--pl);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:15px;color:var(--p);
+  background:rgba(4,150,165,.07);
+}
+.day-date{font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--mu);text-transform:uppercase;margin-bottom:4px}
+.day-title{font-weight:800;font-size:21px;color:var(--dk);margin-bottom:10px;line-height:1.1}
+.day-photos{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px}
+.day-photo{border-radius:var(--r-sm);overflow:hidden;aspect-ratio:1;cursor:pointer}
+.day-photo img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.day-photo:hover img{transform:scale(1.06)}
+.day-pts{list-style:none;display:flex;flex-direction:column;gap:6px}
+.day-pts li{font-size:13px;color:var(--mu);padding-left:16px;position:relative;line-height:1.5}
+.day-pts li::before{content:'→';position:absolute;left:0;color:var(--pl);font-size:12px}
+
+/* ══════════════════════════════
+   GALLERY SLIDER
+══════════════════════════════ */
+.gal-outer{position:relative;display:flex;align-items:center;gap:0;margin:0 -20px}
+.gal-track{
+  display:flex;overflow:hidden;gap:12px;
+  padding:8px 20px;flex:1;
+  scrollbar-width:none;-ms-overflow-style:none;
+  transition:scroll .3s;
+}
+.gal-track::-webkit-scrollbar{display:none}
+.gal-slide{
+  flex:0 0 calc(85% - 8px);aspect-ratio:1/1;
+  border-radius:var(--r-md);overflow:hidden;
+  position:relative;cursor:pointer;background:#0a3a42;
+  transition:transform .3s,box-shadow .3s;
+}
+.gal-slide:hover{transform:scale(1.02);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.gal-slide img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gal-slide:hover img{transform:scale(1.07)}
+.gal-cap{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(5,42,48,.92),rgba(5,42,48,.3) 60%,transparent);
+  backdrop-filter:blur(1px);
+  padding:28px 14px 12px;
+  font-size:11px;font-weight:700;color:#fff;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.gal-arrow{
+  flex-shrink:0;width:48px;height:48px;border-radius:50%;
+  background:rgba(36,251,170,.12);
+  border:1.5px solid rgba(36,251,170,.4);
+  color:var(--a);font-size:30px;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .2s,transform .2s;z-index:2;margin:0 6px;
+}
+.gal-arrow:hover{background:var(--a);color:var(--dk);transform:scale(1.1)}
+.gal-dots{display:flex;justify-content:center;gap:7px;margin-top:18px}
+.gal-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,.22);cursor:pointer;
+  transition:background .3s,transform .3s;
+}
+.gal-dot.on{background:var(--a);transform:scale(1.35)}
+
+/* ══════════════════════════════
+   PAYMENT
+══════════════════════════════ */
+.pay-cards{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.pay-card{
+  background:#fff;border-radius:var(--r-md);padding:20px;
+  display:flex;align-items:center;gap:16px;
+  box-shadow:var(--sh);border-left:4px solid var(--p);
+}
+.pay-step{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--p);color:#fff;
+  font-weight:800;font-size:20px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.pay-info h3{font-size:15px;font-weight:700;color:var(--dk)}
+.pay-info p{font-size:13px;color:var(--mu);margin-top:2px}
+.pay-amt{margin-left:auto;font-weight:800;font-size:28px;color:var(--or)}
+.web-box{
+  background:var(--p);border-radius:var(--r-md);
+  padding:22px 24px;display:flex;align-items:center;
+  justify-content:space-between;margin-top:16px;gap:12px;flex-wrap:wrap;
+}
+.web-box p{font-size:14px;color:rgba(255,255,255,.85);font-weight:500}
+.web-btn{
+  background:var(--a);color:var(--dk);
+  font-size:13px;font-weight:700;padding:12px 24px;
+  border-radius:100px;white-space:nowrap;
+  transition:opacity .2s;
+}
+.web-btn:hover{opacity:.88}
+
+/* ══════════════════════════════
+   BOOKING BOX
+══════════════════════════════ */
+.bbox{
+  background:var(--dk);border-radius:var(--r-lg);
+  padding:56px 32px;text-align:center;position:relative;overflow:hidden;
+}
+.bbox::before{
+  content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(36,251,170,.09) 0%,transparent 70%);
+  pointer-events:none;
+}
+.bl{font-size:11px;font-weight:700;letter-spacing:.2em;color:rgba(255,255,255,.38);text-transform:uppercase;margin-bottom:6px}
+.bp{font-weight:800;font-size:clamp(72px,17vw,130px);color:var(--or);line-height:1;letter-spacing:-3px;margin-bottom:6px}
+.bs{font-size:12px;font-weight:600;letter-spacing:.14em;color:rgba(255,255,255,.28);text-transform:uppercase;margin-bottom:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px}
+.chip{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:100px;padding:8px 14px;
+  font-size:12px;font-weight:500;color:rgba(255,255,255,.62);
+}
+.urg{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1.5px solid rgba(36,251,170,.3);border-radius:100px;
+  padding:12px 28px;font-size:12px;font-weight:700;
+  letter-spacing:.1em;color:var(--a);text-transform:uppercase;
+}
+
+/* ══════════════════════════════
+   TERMS
+══════════════════════════════ */
+.tbox{background:#fff;border-radius:var(--r-md);padding:28px;margin-top:8px;box-shadow:var(--sh)}
+.tbox h3{font-weight:800;font-size:22px;color:var(--dk);margin-bottom:16px}
+.tlist{list-style:none;display:flex;flex-direction:column;gap:8px}
+.tlist li{font-size:13px;color:var(--mu);padding-left:16px;position:relative;line-height:1.6}
+.tlist li::before{content:'◆';position:absolute;left:0;color:var(--p);font-size:8px;top:5px}
+
+/* ══════════════════════════════
+   LIGHTBOX
+══════════════════════════════ */
+.lb{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.97);flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.lb.open{display:flex}
+.lb-img{max-width:100%;max-height:76vh;object-fit:contain;border-radius:var(--r-md)}
+.lb-close{position:absolute;top:16px;right:16px;width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:50%;border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb-nav{display:flex;gap:16px;margin-top:18px}
+.lb-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:26px;padding:10px 28px;border-radius:100px;cursor:pointer}
+.lb-btn:hover{background:var(--p)}
+.lb-ctr{color:rgba(255,255,255,.38);font-size:12px;margin-top:10px;letter-spacing:.1em}
+.lb-cap{color:rgba(255,255,255,.7);font-size:13px;margin-top:8px;font-weight:500}
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer{text-align:center;padding:40px 20px 72px;border-top:1px solid var(--bd);background:var(--wh)}
+/* FOOTER LOGO: bigger, contained */
+.footer-logo{
+  height:72px;
+  width:auto;
+  object-fit:contain;
+  margin:0 auto 16px;
+  display:block;
+}
+footer p{font-size:11px;letter-spacing:.12em;color:var(--mu);font-weight:600;line-height:2.4}
+footer a{color:var(--p);font-weight:700}
+
+/* ══════════════════════════════
+   RESPONSIVE — TABLET 768px+
+══════════════════════════════ */
+@media(min-width:768px){
+  .hero-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px}
+
+  .hotel-wrap{grid-template-columns:1fr 1fr}
+  .hotel-main{grid-column:span 2;height:340px}
+  .hotel-sub{grid-column:span 2}
+  .hotel-card{height:200px}
+
+  .inc-grid{grid-template-columns:1fr 1fr}
+  .inc-card:first-child{border-radius:var(--r-md) 4px 4px 4px}
+  .inc-card:nth-child(2){border-radius:4px var(--r-md) 4px 4px}
+  .inc-card:nth-last-child(2){border-radius:4px 4px 4px var(--r-md)}
+  .inc-card:last-child{border-radius:4px 4px var(--r-md) 4px}
+
+  .food-grid{grid-template-columns:repeat(3,1fr)}
+
+  .gal-slide{flex:0 0 calc(50% - 8px)}
+
+  .pay-cards{flex-direction:row}
+  .pay-card{flex:1}
+}
+
+/* ══════════════════════════════
+   RESPONSIVE — DESKTOP 1024px+
+══════════════════════════════ */
+@media(min-width:1024px){
+  .hotel-main{height:440px}
+  .hotel-card{height:230px}
+
+  .inc-grid{grid-template-columns:repeat(4,1fr)}
+  .inc-card{border-radius:4px!important}
+  .inc-card:first-child{border-radius:var(--r-md) 4px 4px 4px!important}
+  .inc-card:nth-child(4){border-radius:4px var(--r-md) 4px 4px!important}
+  .inc-card:nth-child(5){border-radius:4px 4px 4px var(--r-md)!important}
+  .inc-card:last-child{border-radius:4px 4px var(--r-md) 4px!important}
+
+  .meal-row{max-width:520px}
+  .food-grid{grid-template-columns:repeat(6,1fr)}
+
+  .gal-slide{flex:0 0 calc(33.333% - 8px)}
+
+  .bbox{padding:80px 60px}
+  .bbox::before{width:700px;height:700px}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <!-- LOGO -->
-  <div class="logo-area">
-    <img class="logo-img" src="logo.png" alt="KairaliTrails"/>
-    <div class="logo-tagline">Community Trips · Phuket 2026</div>
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="lbBg(event)">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <img class="lb-img" id="lbImg" src="" alt=""/>
+  <div class="lb-cap" id="lbCap"></div>
+  <div class="lb-nav">
+    <button class="lb-btn" onclick="lbMove(-1)">‹</button>
+    <button class="lb-btn" onclick="lbMove(1)">›</button>
   </div>
-
-  <!-- HEADING -->
-  <div class="heading">Choose Your <span class="accent">Adventure</span></div>
-  <div class="subheading">Two epic Phuket packages — pick your dates & book your spot</div>
-
-  <!-- CARDS -->
-  <div class="cards">
-
-    <!-- JULY — PHUKET SQUAD -->
-    <a class="card" href="july/index.html">
-      <img class="card-cover" src="july/hotel_pool.png" alt="Phuket Squad"/>
-      <div class="card-body">
-        <div class="card-badge">🌴 GenZ Community Trip</div>
-        <div class="card-title">Phuket Squad</div>
-        <div class="card-dates">✈️ July 7–11, 2026 &nbsp;·&nbsp; 4N / 5D</div>
-        <div class="card-price">₹53,000</div>
-        <div class="card-price-sub">per person · all inclusive</div>
-        <ul class="card-highlights">
-          <li>Direct flight BLR ↔ Phuket</li>
-          <li>Island hopping · Phi Phi tour</li>
-          <li>Adventure day · ATV & Rafting</li>
-          <li>Nightlife guide · Bangla Road</li>
-          <li>Only 16 members</li>
-        </ul>
-        <span class="card-btn">View Package →</span>
-      </div>
-    </a>
-
-    <!-- AUGUST — ISLAND RUSH -->
-    <a class="card" href="august/island-rush.html">
-      <img class="card-cover" src="august/cover.jpg" alt="Island Rush"/>
-      <div class="card-body">
-        <div class="card-badge">🏝️ Family & All Ages</div>
-        <div class="card-title">Island Rush</div>
-        <div class="card-dates">✈️ Aug 2–6, 2026 &nbsp;·&nbsp; 4N / 5D</div>
-        <div class="card-price">₹55,000</div>
-        <div class="card-price-sub">per person · all inclusive</div>
-        <ul class="card-highlights">
-          <li>Direct flight BLR ↔ Phuket</li>
-          <li>Phi Phi Island · 7 islands</li>
-          <li>City tour · Tiger Kingdom</li>
-          <li>Add-on options available</li>
-          <li>All age groups welcome</li>
-        </ul>
-        <span class="card-btn">View Package →</span>
-      </div>
-    </a>
-
-  </div>
-
-  <div class="footer">
-    <a href="https://www.kairalitrails.com" target="_blank">www.kairalitrails.com</a>
-    &nbsp;·&nbsp; Phuket 2026
-  </div>
-
+  <div class="lb-ctr" id="lbCtr"></div>
 </div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <img class="nav-logo" src="logo.png" alt="KairaliTrails"/>
+    <div class="nav-pill">Phuket 2026</div>
+  </div>
+</nav>
+
+<!-- SEAT BAR -->
+<div class="seat-bar">
+  <div class="pulse"></div>
+  <span class="st">Only</span>
+  <span class="sn" id="seatNum">12</span>
+  <span class="su">SEATS LEFT</span>
+  <span class="st">out of 16!</span>
+  <a class="bk-btn" href="https://www.kairalitrails.com" target="_blank">Book Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🌴 GenZ Community Trip · KairaliTrails</div>
+      <div class="hero-title">PHU<span class="ta">KET</span><br><span class="tb">SQUAD</span></div>
+      <div class="hero-year">2026</div>
+    </div>
+    <div>
+      <div class="hero-tags">
+        <div class="hero-tag"><b>July 7–11, 2026</b></div>
+        <div class="hero-tag"><b>4 Nights · 5 Days</b></div>
+        <div class="hero-tag">Only <b>16 Members</b></div>
+        <div class="hero-tag">BLR ✈ Phuket <b>Direct</b></div>
+      </div>
+      <div style="margin-top:28px">
+        <div class="hero-price-label">All Inclusive · Per Person</div>
+        <div class="hero-price">₹53,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOTEL -->
+<div class="sw off"><div class="sc">
+  <div class="slbl">🏨 Where You'll Stay</div>
+  <div class="sh">Hotel<br><span class="c">Vibes.</span></div>
+  <div class="hotel-wrap">
+    <div class="hotel-main" onclick="openGallery('hotel',0)">
+      <img src="hotel_pool.png" alt="Rooftop Pool"/>
+      <div class="itag">🏊 Rooftop Pool — Tap to view</div>
+    </div>
+    <div class="hotel-sub">
+      <div class="hotel-card" onclick="openGallery('hotel',1)">
+        <img src="hotel_room.png" alt="Double Room"/>
+        <div class="itag">🛏️ Double Room</div>
+      </div>
+      <div class="hotel-card" onclick="openGallery('hotel',2)">
+        <img src="hotel_bath.png" alt="Bathroom"/>
+        <div class="itag">🚿 En-Suite</div>
+      </div>
+    </div>
+  </div>
+  <div class="hint">👆 Tap any photo to view fullscreen & swipe</div>
+  <div class="perks">
+    <div class="perk">✅ Double Sharing</div>
+    <div class="perk">✅ Rooftop Pool</div>
+    <div class="perk">✅ 4 Nights</div>
+    <div class="perk">✅ City Centre</div>
+  </div>
+</div></div>
+
+<!-- WHAT'S IN -->
+<div class="sw wh"><div class="sc">
+  <div class="slbl">💰 All Covered</div>
+  <div class="sh">Every-<br>thing <span class="c">Is In.</span></div>
+  <div class="inc-grid">
+    <div class="inc-card"><span class="inc-icon">✈️</span><div><h3>Direct Flights</h3><p>BLR ↔ Phuket direct with 20 kg check-in baggage.</p></div></div>
+    <div class="inc-card"><span class="inc-icon">🏨</span><div><h3>Hotel (Double Sharing)</h3><p>4 nights with rooftop pool, city centre location.</p></div></div>
+    <div class="inc-card"><span class="inc-icon">🚐</span><div><h3>All Transfers</h3><p>Airport pickup & drop. All local transport arranged.</p></div></div>
+    <div class="inc-card"><span class="inc-icon">🏝️</span><div><h3>Island Entry Fees</h3><p>Phi Phi OR James Bond Island + National Park fees.</p></div></div>
+    <div class="inc-card"><span class="inc-icon">🌙</span><div><h3>Nightlife with Guide</h3><p>Club hopping + Bangla Road guided night roam.</p></div></div>
+    <div class="inc-card"><span class="inc-icon">🏍️</span><div><h3>ATV Ride (30 min)</h3><p>Thrilling ATV jungle trail — pure adrenaline!</p></div></div>
+    <div class="inc-card"><span class="inc-icon">🛶</span><div><h3>River Rafting 5.5 km</h3><p>Rushing rapids through the Phuket jungle.</p></div></div>
+    <div class="inc-card"><span class="inc-icon">🛕</span><div><h3>Monkey Cave Temple</h3><p>Suwankuha Temple — giant reclining Buddha visit.</p></div></div>
+  </div>
+</div></div>
+
+<!-- MEALS -->
+<div class="sw dk"><div class="sc">
+  <div class="slbl">🍳 Meals Included</div>
+  <div class="sh">Eat Well,<br><span class="c">Travel Hard.</span></div>
+  <div class="meal-row">
+    <div class="meal-badge"><div class="meal-num">4</div><h3>Breakfasts</h3><p>Hotel daily</p></div>
+    <div class="meal-badge"><div class="meal-num">2</div><h3>Lunches</h3><p>Island + Adventure day</p></div>
+  </div>
+  <div class="food-grid">
+    <div class="food-card" onclick="openGallery('food',0)"><img src="food_croissant.png" alt="Croissants"/><div class="food-lbl">🥐 Croissants</div></div>
+    <div class="food-card" onclick="openGallery('food',1)"><img src="food_eggs.png" alt="Eggs"/><div class="food-lbl">🍳 Fried Eggs</div></div>
+    <div class="food-card" onclick="openGallery('food',2)"><img src="food_sausage.png" alt="Sausages"/><div class="food-lbl">🌭 Sausages</div></div>
+    <div class="food-card" onclick="openGallery('food',3)"><img src="food_toast.png" alt="Toast"/><div class="food-lbl">🍞 Toast & Jam</div></div>
+    <div class="food-card" onclick="openGallery('food',4)"><img src="food_cereal.png" alt="Cereals"/><div class="food-lbl">🥣 Cereal Bar</div></div>
+    <div class="food-card" onclick="openGallery('food',5)"><img src="food_juice.png" alt="Juices"/><div class="food-lbl">🧃 Fresh Juices</div></div>
+  </div>
+  <div class="hint">👆 Tap photos to view fullscreen</div>
+</div></div>
+
+<!-- ITINERARY -->
+<div class="sw wh"><div class="sc">
+  <div class="slbl">📅 The Plan</div>
+  <div class="sh">5-Day<br><span class="c">Breakdown.</span></div>
+  <div class="day-list">
+
+    <div class="day-item">
+      <div class="day-circle">D1</div>
+      <div style="flex:1">
+        <div class="day-date">July 7 · Monday</div>
+        <div class="day-title">Arrival — Phuket Mode ON 🛬</div>
+        <div class="day-photos">
+          <div class="day-photo" onclick="openGallery('d1',0)"><img src="d1_bangla.jpg" alt="Bangla"/></div>
+          <div class="day-photo" onclick="openGallery('d1',1)"><img src="d1_seven.jpg" alt="7-Eleven"/></div>
+          <div class="day-photo" onclick="openGallery('d1',2)"><img src="d1_food.jpg" alt="Street Food"/></div>
+        </div>
+        <ul class="day-pts">
+          <li>Direct flight BLR → Phuket, airport pickup</li>
+          <li>Hotel check-in, rooftop pool chill time</li>
+          <li>Iconic Bangla Road, Patong Beach walk</li>
+          <li>7-Eleven stop — Phuket essentials 🛒</li>
+          <li>Try daring street food — scorpions, beetles! 🦂</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-item">
+      <div class="day-circle">D2</div>
+      <div style="flex:1">
+        <div class="day-date">July 8 · Tuesday</div>
+        <div class="day-title">Island Hopping Day 🏝️</div>
+        <div class="day-photos">
+          <div class="day-photo" onclick="openGallery('d2',0)"><img src="d2_island.jpg" alt="Island"/></div>
+          <div class="day-photo" onclick="openGallery('d2',1)"><img src="d2_snorkel.jpg" alt="Snorkel"/></div>
+          <div class="day-photo" onclick="openGallery('d2',2)"><img src="d2_lunch.jpg" alt="Lunch"/></div>
+        </div>
+        <ul class="day-pts">
+          <li>Breakfast included</li>
+          <li>Phi Phi OR James Bond Island full-day</li>
+          <li>Longtail boats, crystal turquoise waters</li>
+          <li>Snorkelling with tropical fish 🐠</li>
+          <li>Island buffet lunch — prawns, chicken, calamari</li>
+          <li>Night: Club hopping with guide</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-item">
+      <div class="day-circle">D3</div>
+      <div style="flex:1">
+        <div class="day-date">July 9 · Wednesday</div>
+        <div class="day-title">Adventure Day 🏍️</div>
+        <div class="day-photos">
+          <div class="day-photo" onclick="openGallery('d3',0)"><img src="d3_temple.jpg" alt="Temple"/></div>
+          <div class="day-photo" onclick="openGallery('d3',1)"><img src="d3_rafting.jpg" alt="Rafting"/></div>
+          <div class="day-photo" onclick="openGallery('d3',2)"><img src="d3_atv.jpg" alt="ATV"/></div>
+        </div>
+        <ul class="day-pts">
+          <li>Breakfast included</li>
+          <li>Suwankuha Temple — Giant Reclining Buddha 🛕</li>
+          <li>River rafting — 5.5 km of pure rapids</li>
+          <li>ATV jungle trail — 30 mins of mud & thrills</li>
+          <li>Lunch included</li>
+          <li>Night: Walking street & nightlife</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-item">
+      <div class="day-circle">D4</div>
+      <div style="flex:1">
+        <div class="day-date">July 10 · Thursday</div>
+        <div class="day-title">Free Roam + Last Night 🌅</div>
+        <div class="day-photos">
+          <div class="day-photo" onclick="openGallery('d4',0)"><img src="d4_oldtown.jpg" alt="Old Town"/></div>
+          <div class="day-photo" onclick="openGallery('d4',1)"><img src="d4_cape.jpg" alt="Cape"/></div>
+          <div class="day-photo" onclick="openGallery('d4',2)"><img src="d4_night.jpg" alt="Night"/></div>
+        </div>
+        <ul class="day-pts">
+          <li>Breakfast included</li>
+          <li>Old Phuket Town — colourful streets & cafés</li>
+          <li>Promthep Cape — golden hour bay views</li>
+          <li>Kata Beach night market & street food</li>
+          <li>Squad's last night out 🥂</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-item">
+      <div class="day-circle">D5</div>
+      <div style="flex:1">
+        <div class="day-date">July 11 · Friday</div>
+        <div class="day-title">Checkout & Fly Home ✈️</div>
+        <div class="day-photos" style="grid-template-columns:1fr">
+          <div class="day-photo" style="aspect-ratio:16/9" onclick="openGallery('d5',0)"><img src="d5_farewell.jpg" alt="Farewell"/></div>
+        </div>
+        <ul class="day-pts">
+          <li>Breakfast included</li>
+          <li>Hotel checkout, airport drop arranged</li>
+          <li>Direct flight back to Bengaluru</li>
+          <li>Going back as strangers who became friends 🥹</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div></div>
+
+<!-- VIBE GALLERY -->
+<div class="sw dk"><div class="sc">
+  <div class="slbl">✨ The Vibe</div>
+  <div class="sh">Strangers<br><span class="c">Becoming Squad.</span></div>
+  <div class="gal-outer">
+    <button class="gal-arrow" onclick="galMove(-1)">&#8249;</button>
+    <div class="gal-track" id="galTrack">
+      <div class="gal-slide" onclick="openGallery('gal',0)"><img src="g1.jpg" alt="Squad"/><div class="gal-cap">Squad Goals</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',1)"><img src="g2.jpg" alt="Chai"/><div class="gal-cap">Night Chai ☕</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',2)"><img src="g3.jpg" alt="Lakeside"/><div class="gal-cap">Lakeside Chill</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',3)"><img src="g4.jpg" alt="Coconut"/><div class="gal-cap">Coconut 🥥</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',4)"><img src="g5.png" alt="Market"/><div class="gal-cap">Local Market</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',5)"><img src="g6.png" alt="Bangla"/><div class="gal-cap">Bangla Nights</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',6)"><img src="g7.jpg" alt="Neon"/><div class="gal-cap">Neon Streets</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',7)"><img src="g8.jpg" alt="Beach"/><div class="gal-cap">Beach Café ☀️</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',8)"><img src="g9.jpg" alt="Phi Phi"/><div class="gal-cap">Phi Phi Paradise 🏝️</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',9)"><img src="g10.jpg" alt="Bangla girl"/><div class="gal-cap">Bangla Road 🔴</div></div>
+      <div class="gal-slide" onclick="openGallery('gal',10)"><img src="g11.jpg" alt="Jungceylon"/><div class="gal-cap">Jungceylon Night</div></div>
+    </div>
+    <button class="gal-arrow" onclick="galMove(1)">&#8250;</button>
+  </div>
+  <div class="gal-dots" id="galDots"></div>
+  <div class="hint">👆 Tap photo to open · Use arrows or swipe</div>
+</div></div>
+
+<!-- PAYMENT -->
+<div class="sw wh"><div class="sc">
+  <div class="slbl">💳 Payment & Booking</div>
+  <div class="sh">Book Your<br><span class="c">Spot.</span></div>
+  <div class="pay-cards">
+    <div class="pay-card">
+      <div class="pay-step">1</div>
+      <div class="pay-info"><h3>Pay at Booking</h3><p>Confirms your seat instantly</p></div>
+      <div class="pay-amt">50%</div>
+    </div>
+    <div class="pay-card" style="border-left-color:var(--or)">
+      <div class="pay-step" style="background:var(--or)">2</div>
+      <div class="pay-info"><h3>Pay Before Departure</h3><p>Remaining 50% by June 22, 2026</p></div>
+      <div class="pay-amt" style="color:var(--p)">50%</div>
+    </div>
+  </div>
+  <div class="web-box">
+    <p>🌐 Visit our website to book your spot</p>
+    <a class="web-btn" href="https://www.kairalitrails.com" target="_blank">kairalitrails.com</a>
+  </div>
+</div></div>
+
+<!-- BOOKING CTA -->
+<div class="sw off"><div class="sc">
+  <div class="bbox">
+    <div class="bl">Per Person · All Inclusive</div>
+    <div class="bp">₹53,000</div>
+    <div class="bs">First Come · First Served</div>
+    <div class="chips">
+      <div class="chip">📅 July 7–11, 2026</div>
+      <div class="chip">✈️ Direct BLR ↔ Phuket</div>
+      <div class="chip">🧳 20 kg Baggage</div>
+      <div class="chip">🏨 Hotel + Pool</div>
+      <div class="chip">🍳 4 Breakfast + 2 Lunch</div>
+      <div class="chip">🏝️ Island Tours</div>
+      <div class="chip">🏍️ ATV + Rafting</div>
+      <div class="chip">🛕 Monkey Cave</div>
+      <div class="chip">🌙 Nightlife Guide</div>
+      <div class="chip">👥 16 Members Only</div>
+    </div>
+    <div class="urg">⚡ Only <span id="seatNumB" style="font-weight:800;font-size:22px;margin:0 4px">12</span> Seats Left</div>
+  </div>
+</div></div>
+
+<!-- TERMS -->
+<div class="sw wh"><div class="sc">
+  <div class="slbl">📋 Terms & Conditions</div>
+  <div class="tbox">
+    <h3>📋 Important Notes</h3>
+    <ul class="tlist">
+      <li>Passport valid for 6+ months from departure, minimum 3 blank pages required.</li>
+      <li>50% payment at booking to confirm slot. Remaining 50% due by June 22, 2026.</li>
+      <li>Booking once confirmed cannot be cancelled or modified.</li>
+      <li>Full package cost is non-refundable in case of no-show or cancellation.</li>
+      <li>Standard check-in: 15:00 hrs. Check-out: 11:00 hrs.</li>
+      <li>Accommodation provided subject to availability — cannot be selected in advance.</li>
+      <li>Additional sightseeing or vehicle usage beyond itinerary incurs extra charges.</li>
+      <li>Airline delays or cancellations are beyond our control.</li>
+      <li>Please be punctual for all transfers and tours.</li>
+      <li>Rates subject to change due to fuel, govt. levies or rate fluctuations.</li>
+      <li>Tour itineraries may change due to weather or unforeseen circumstances.</li>
+      <li>Seats auto-assigned at check-in. Specific selection may require extra charges.</li>
+      <li>No refund for unutilised services.</li>
+    </ul>
+  </div>
+</div></div>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-logo" src="logo.png" alt="KairaliTrails"/>
+  <p>
+    KAIRALITRAILS · GENZ COMMUNITY TRIP · PHUKET 2026<br>
+    BLR ✈ PHUKET · DIRECT FLIGHT · ONLY 16 MEMBERS<br>
+    <a href="https://www.kairalitrails.com" target="_blank">www.kairalitrails.com</a>
+  </p>
+</footer>
+
+<script>
+/* ── LIGHTBOX ── */
+var galleries={
+  hotel:[["hotel_pool.png","Rooftop Pool"],["hotel_room.png","Double Room"],["hotel_bath.png","En-Suite Bathroom"]],
+  food:[["food_croissant.png","Butter Croissants"],["food_eggs.png","Fried Eggs"],["food_sausage.png","Sausages"],["food_toast.png","Toast & Jam"],["food_cereal.png","Cereal Bar"],["food_juice.png","Fresh Juices"]],
+  d1:[["d1_bangla.jpg","Patong Beach · Bangla Road"],["d1_seven.jpg","7-Eleven Phuket"],["d1_food.jpg","Daring Street Food 🦂"]],
+  d2:[["d2_island.jpg","Phi Phi Island"],["d2_snorkel.jpg","Snorkelling"],["d2_lunch.jpg","Island Buffet Lunch"]],
+  d3:[["d3_temple.jpg","Suwankuha Temple"],["d3_rafting.jpg","River Rafting 5.5km"],["d3_atv.jpg","ATV Jungle Ride"]],
+  d4:[["d4_oldtown.jpg","Old Phuket Town"],["d4_cape.jpg","Promthep Cape"],["d4_night.jpg","Kata Beach Night"]],
+  d5:[["d5_farewell.jpg","Farewell · Strangers became friends 🥹"]],
+  gal:[["g1.jpg","Squad Goals"],["g2.jpg","Night Chai ☕"],["g3.jpg","Lakeside Chill"],["g4.jpg","Coconut Vibes 🥥"],["g5.png","Local Market Night"],["g6.png","Bangla Road Nights"],["g7.jpg","Neon Streets"],["g8.jpg","Beach Café ☀️"],["g9.jpg","Phi Phi Paradise 🏝️"],["g10.jpg","Bangla Road Vibes"],["g11.jpg","Jungceylon Night"]]
+};
+var curGal=null,curIdx=0,lbStartX=0;
+function openGallery(g,i){curGal=g;curIdx=i;showLb();}
+function showLb(){
+  var g=galleries[curGal];
+  document.getElementById('lbImg').src=g[curIdx][0];
+  document.getElementById('lbCap').textContent=g[curIdx][1];
+  document.getElementById('lbCtr').textContent=(curIdx+1)+' / '+g.length;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+function lbMove(d){var g=galleries[curGal];curIdx=(curIdx+d+g.length)%g.length;showLb();}
+function lbBg(e){if(e.target===document.getElementById('lb'))closeLb();}
+var lb=document.getElementById('lb');
+lb.addEventListener('touchstart',function(e){lbStartX=e.touches[0].clientX;},{passive:true});
+lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-lbStartX;if(Math.abs(dx)>50)lbMove(dx<0?1:-1);},{passive:true});
+document.addEventListener('keydown',function(e){
+  if(!document.getElementById('lb').classList.contains('open'))return;
+  if(e.key==='ArrowRight')lbMove(1);
+  if(e.key==='ArrowLeft')lbMove(-1);
+  if(e.key==='Escape')closeLb();
+});
+
+/* ── SEAT COUNTER ── */
+var seats=[{d:14000,v:11},{d:30000,v:10},{d:52000,v:9}];
+seats.forEach(function(s){
+  setTimeout(function(){
+    var el=document.getElementById('seatNum');
+    var b=document.getElementById('seatNumB');
+    el.classList.add('flip');
+    setTimeout(function(){el.textContent=s.v;if(b)b.textContent=s.v;el.classList.remove('flip');},300);
+  },s.d);
+});
+
+/* ── GALLERY SLIDER ── */
+var galIdx=0;
+var track=document.getElementById('galTrack');
+var slides=track?track.querySelectorAll('.gal-slide'):[];
+var dotsEl=document.getElementById('galDots');
+var galSX=0;
+
+// Build dots
+slides.forEach(function(_,i){
+  var d=document.createElement('div');
+  d.className='gal-dot'+(i===0?' on':'');
+  d.onclick=function(){galTo(i);};
+  dotsEl.appendChild(d);
+});
+
+function getVis(){return window.innerWidth<600?1:window.innerWidth<1024?2:3;}
+
+function galTo(idx){
+  var vis=getVis();
+  var max=slides.length-vis;
+  galIdx=Math.max(0,Math.min(idx,max));
+  var w=slides[0]?slides[0].offsetWidth+12:0;
+  track.scrollLeft=galIdx*w;
+  var dots=dotsEl.querySelectorAll('.gal-dot');
+  dots.forEach(function(d,i){d.classList.toggle('on',i===galIdx);});
+}
+
+function galMove(dir){galTo(galIdx+dir);}
+
+if(track){
+  track.addEventListener('touchstart',function(e){galSX=e.touches[0].clientX;},{passive:true});
+  track.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-galSX;if(Math.abs(dx)>40)galMove(dx<0?1:-1);},{passive:true});
+}
+window.addEventListener('resize',function(){galTo(galIdx);});
+</script>
 </body>
 </html>
