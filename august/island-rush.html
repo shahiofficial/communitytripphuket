@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Phuket Island Rush 2026 | Kairalitrails</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --p:#0496a5;--pl:#12b5c9;--pd:#037a87;
+  --a:#24fbaa;--or:#f3792a;
+  --dk:#052a30;--tx:#0d3b43;--mu:#5a9aa5;
+  --bd:rgba(4,150,165,0.15);--sh:0 4px 24px rgba(4,150,165,0.10);
+  --wh:#fff;--off:#f4fcfd;
+  --font:'Poppins',sans-serif;
+  --max:1200px;--pad:clamp(20px,5vw,80px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--off);color:var(--tx);font-family:var(--font);overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%} a{text-decoration:none}
+
+/* COVER */
+.cover{position:relative;width:100%;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.cover-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-image:url('cover.jpg')}
+.cover-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,42,48,0.55) 0%,rgba(5,42,48,0.25) 40%,rgba(5,42,48,0.75) 100%)}
+.cover-content{position:relative;z-index:2;text-align:center;padding:0 24px;display:flex;flex-direction:column;align-items:center}
+.cover-logo{height:64px;width:auto;object-fit:contain;margin-bottom:24px;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4))}
+.cover-badge{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(36,251,170,.4);border-radius:100px;padding:7px 18px;font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--a);text-transform:uppercase;margin-bottom:20px;background:rgba(0,0,0,0.2);backdrop-filter:blur(8px)}
+.cover-title{font-weight:800;font-size:clamp(48px,14vw,110px);line-height:.86;color:#fff;letter-spacing:-2px;margin-bottom:8px;text-shadow:0 4px 24px rgba(0,0,0,0.5)}
+.cover-title .ta{color:var(--a)}
+.cover-title .tb{-webkit-text-stroke:2px rgba(255,255,255,.3);color:transparent}
+.cover-sub{font-weight:800;font-size:clamp(18px,5vw,40px);color:rgba(255,255,255,0.2);letter-spacing:.12em;margin-bottom:28px}
+.cover-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px}
+.cover-pill{background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:8px 18px;font-size:12px;font-weight:600;color:#fff}
+.cover-price-lbl{font-weight:800;font-size:clamp(14px,3vw,18px);color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.cover-amount{font-weight:800;font-size:clamp(44px,11vw,80px);color:var(--or);line-height:1;letter-spacing:-2px;text-shadow:0 4px 20px rgba(243,121,42,0.4)}
+.cover-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:.12em;text-transform:uppercase;animation:bounce 2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:2.5px solid var(--p);box-shadow:0 2px 20px rgba(4,150,165,0.12);height:64px;display:none}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--pad);height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{height:48px;width:auto;object-fit:contain;display:block}
+.nav-pill{background:var(--p);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.1em;padding:7px 18px;border-radius:100px;text-transform:uppercase;white-space:nowrap}
+
+/* COUNTDOWN */
+.cd-bar{position:sticky;top:0;z-index:199;background:linear-gradient(90deg,#c44f00,#f3792a);padding:6px 16px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 2px 8px rgba(243,121,42,0.3)}
+.cd-label{color:rgba(255,255,255,0.9);font-size:11px;font-weight:700;letter-spacing:0.1em;white-space:nowrap;text-transform:uppercase}
+.cd-timer{display:flex;align-items:center;gap:4px}
+.cd-block{background:rgba(0,0,0,0.2);border-radius:5px;padding:3px 7px;text-align:center;min-width:36px}
+.cd-num{font-weight:800;font-size:16px;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.cd-unit{font-size:7px;color:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase}
+.cd-sep{font-weight:800;font-size:14px;color:rgba(255,255,255,0.5);padding-bottom:6px}
+
+/* SECTIONS */
+.sw{width:100%} .sw.wh{background:var(--wh)} .sw.dk{background:var(--dk)} .sw.off{background:var(--off)}
+.sc{max-width:var(--max);margin:0 auto;width:100%;padding:56px var(--pad)}
+.slbl{font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--p);text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.slbl::after{content:'';flex:1;height:1px;background:rgba(4,150,165,.18)}
+.sw.dk .slbl{color:var(--a)} .sw.dk .slbl::after{background:rgba(36,251,170,.15)}
+.sh{font-weight:800;font-size:clamp(32px,8vw,58px);line-height:.92;margin-bottom:26px;letter-spacing:-1px;color:var(--dk)}
+.sw.dk .sh{color:#fff} .sh .c{color:var(--pl)} .sw.dk .sh .c{color:var(--a)}
+.hint{text-align:center;color:var(--mu);font-size:11px;margin-top:10px}
+.sw.dk .hint{color:rgba(255,255,255,.25)}
+
+/* ITINERARY */
+.day-list{display:flex;flex-direction:column}
+.day-item{padding:22px 0;border-bottom:1px solid var(--bd);display:flex;gap:14px;align-items:flex-start}
+.day-item:last-child{border-bottom:none}
+.day-circle{width:48px;height:48px;border-radius:50%;flex-shrink:0;border:2px solid var(--pl);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:var(--p);background:rgba(4,150,165,.07)}
+.day-date{font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--mu);text-transform:uppercase;margin-bottom:3px}
+.day-title{font-weight:800;font-size:18px;color:var(--dk);margin-bottom:5px;line-height:1.1}
+.day-time{font-size:11px;font-weight:600;color:var(--p);background:rgba(4,150,165,0.09);border-radius:100px;padding:3px 12px;display:inline-block;margin-bottom:8px}
+.day-desc{font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:10px}
+.day-pts{list-style:none;display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.day-pts li{font-size:12px;color:var(--mu);padding-left:14px;position:relative;line-height:1.5}
+.day-pts li::before{content:'→';position:absolute;left:0;color:var(--pl);font-size:11px}
+.day-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.day-photo{border-radius:10px;overflow:hidden;aspect-ratio:1;cursor:pointer}
+.day-photo img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.day-photo:hover img{transform:scale(1.05)}
+.day-photo.wide{grid-column:span 3;aspect-ratio:16/8}
+
+/* SCUBA INLINE */
+.scuba-card{margin-top:14px;background:linear-gradient(135deg,rgba(4,150,165,0.07),rgba(36,251,170,0.05));border:1.5px solid rgba(4,150,165,0.2);border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center}
+.scuba-img{width:76px;height:76px;border-radius:10px;overflow:hidden;flex-shrink:0;cursor:pointer}
+.scuba-img img{width:100%;height:100%;object-fit:cover}
+.scuba-info h4{font-size:13px;font-weight:700;color:var(--dk);margin-bottom:3px}
+.scuba-info p{font-size:12px;color:var(--mu);margin-bottom:6px;line-height:1.4}
+.scuba-badge{background:var(--or);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;display:inline-block}
+.addon-tag{background:rgba(36,251,170,0.15);color:var(--pd);font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;letter-spacing:0.08em;margin-left:6px;text-transform:uppercase}
+
+/* INC/EXC */
+.inc-exc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.inc-box{background:#fff;border-radius:16px;padding:20px;box-shadow:var(--sh)}
+.inc-box h3{font-weight:700;font-size:14px;margin-bottom:12px}
+.inc-box.incl h3{color:#00a86b} .inc-box.excl h3{color:#e74c3c}
+.inc-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.inc-list li{font-size:12px;color:var(--mu);padding-left:18px;position:relative;line-height:1.5}
+.inc-list li::before{position:absolute;left:0;font-size:12px}
+.inc-box.incl .inc-list li::before{content:'✓';color:#00a86b;font-weight:700}
+.inc-box.excl .inc-list li::before{content:'✕';color:#e74c3c;font-weight:700}
+
+/* PRICING */
+.price-tbl{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--sh)}
+.ptr{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--bd)}
+.ptr:last-child{border-bottom:none}
+.ptr.hdr{background:var(--p)}
+.ptr.hdr span{font-weight:700;font-size:12px;color:#fff;letter-spacing:0.05em}
+.ptr-lbl{font-size:14px;font-weight:600;color:var(--tx)}
+.ptr-amt{font-weight:800;font-size:18px;color:var(--or)}
+.pay-policy{background:#fff;border-radius:16px;padding:20px;box-shadow:var(--sh);margin-top:12px}
+.pay-policy h3{font-weight:700;font-size:14px;color:var(--dk);margin-bottom:14px}
+.pay-steps{display:flex;gap:10px}
+.psc{flex:1;background:var(--off);border-radius:12px;padding:14px;border-left:4px solid var(--p)}
+.psc.b{border-left-color:var(--or)}
+.psc-lbl{font-size:11px;color:var(--mu);margin-bottom:3px;font-weight:500}
+.psc-pct{font-weight:800;font-size:28px;color:var(--or);line-height:1}
+.psc.b .psc-pct{color:var(--p)}
+.psc-sub{font-size:11px;color:var(--mu);margin-top:3px}
+
+/* ADD-ONS */
+.addon-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.addon-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--sh);border:1.5px solid var(--bd)}
+.addon-head{background:linear-gradient(135deg,var(--dk),#0a3a42);padding:16px 18px;display:flex;align-items:center;justify-content:space-between}
+.addon-head h3{font-weight:800;font-size:15px;color:#fff}
+.addon-day-tag{font-size:9px;font-weight:700;color:var(--a);background:rgba(36,251,170,0.15);border:1px solid rgba(36,251,170,0.3);border-radius:100px;padding:3px 9px;letter-spacing:0.1em;text-transform:uppercase}
+.addon-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.addon-ph{aspect-ratio:1;overflow:hidden;cursor:pointer}
+.addon-ph img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.addon-ph:hover img{transform:scale(1.05)}
+.addon-prices{padding:14px 16px;display:flex;gap:8px;flex-wrap:wrap}
+.addon-pi{background:var(--off);border-radius:10px;padding:10px 14px;flex:1;min-width:110px}
+.addon-pi .who{font-size:10px;color:var(--mu);font-weight:600;margin-bottom:2px}
+.addon-pi .how{font-weight:800;font-size:17px;color:var(--or)}
+.addon-desc{padding:0 16px 14px;font-size:12px;color:var(--mu);line-height:1.5}
+
+/* HOTEL */
+.hotel-wrap{display:flex;flex-direction:column;gap:10px}
+.hotel-main{border-radius:16px;overflow:hidden;position:relative;height:240px;cursor:pointer;background:#cde8ec}
+.hotel-sub{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hotel-card{border-radius:16px;overflow:hidden;position:relative;height:165px;cursor:pointer;background:#cde8ec}
+.hotel-main img,.hotel-card img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.hotel-main:hover img,.hotel-card:hover img{transform:scale(1.04)}
+.itag{position:absolute;bottom:10px;left:10px;background:rgba(255,255,255,.95);border-radius:100px;padding:4px 12px;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--dk)}
+.perks{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.perk{background:#fff;border:1.5px solid var(--bd);border-radius:100px;padding:7px 13px;font-size:12px;font-weight:600;color:var(--dk);box-shadow:var(--sh)}
+.meal-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.meal-ph{border-radius:12px;overflow:hidden;aspect-ratio:1;position:relative;cursor:pointer}
+.meal-ph img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.meal-ph:hover img{transform:scale(1.05)}
+.meal-lbl{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(5,42,48,.88),transparent);padding:14px 8px 7px;font-size:10px;font-weight:700;color:#fff;letter-spacing:.08em;text-transform:uppercase}
+.meal-badges{display:flex;gap:8px;margin-top:10px}
+.mbg{flex:1;background:var(--dk);border-radius:12px;padding:14px;text-align:center}
+.mbg-n{font-weight:800;font-size:36px;color:var(--a);line-height:1}
+.mbg h3{font-size:12px;font-weight:700;color:#fff;margin-top:4px}
+
+/* GALLERY */
+.gal-outer{position:relative;display:flex;align-items:center;gap:0;margin:0 -20px}
+.gal-track{display:flex;overflow:hidden;gap:10px;padding:8px 20px;flex:1;scrollbar-width:none;-ms-overflow-style:none}
+.gal-track::-webkit-scrollbar{display:none}
+.gal-slide{flex:0 0 calc(85% - 8px);aspect-ratio:1/1;border-radius:14px;overflow:hidden;position:relative;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.gal-slide:hover{transform:scale(1.02);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.gal-slide img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gal-slide:hover img{transform:scale(1.07)}
+.gal-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(5,42,48,.88),transparent);padding:20px 12px 9px;font-size:11px;font-weight:700;color:#fff;letter-spacing:.08em;text-transform:uppercase}
+.gal-arrow{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:rgba(36,251,170,.12);border:1.5px solid rgba(36,251,170,.35);color:var(--a);font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;margin:0 4px}
+.gal-arrow:hover{background:var(--a);color:var(--dk);transform:scale(1.1)}
+.gal-dots{display:flex;justify-content:center;gap:6px;margin-top:12px}
+.gal-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:background .3s,transform .3s}
+.gal-dot.on{background:var(--a);transform:scale(1.35)}
+
+/* WEB BOX */
+.web-box{background:var(--p);border-radius:14px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:10px;flex-wrap:wrap}
+.web-box p{font-size:13px;color:rgba(255,255,255,.85);font-weight:500}
+.web-btn{background:var(--a);color:var(--dk);font-size:12px;font-weight:700;padding:10px 20px;border-radius:100px;white-space:nowrap}
+
+/* TERMS */
+.tbox{background:#fff;border-radius:16px;padding:22px;box-shadow:var(--sh)}
+.tbox h3{font-weight:800;font-size:18px;color:var(--dk);margin-bottom:12px}
+.tlist{list-style:none;display:flex;flex-direction:column;gap:7px}
+.tlist li{font-size:12px;color:var(--mu);padding-left:14px;position:relative;line-height:1.6}
+.tlist li::before{content:'◆';position:absolute;left:0;color:var(--p);font-size:7px;top:5px}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.97);flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.lb.open{display:flex}
+.lb-img{max-width:100%;max-height:76vh;object-fit:contain;border-radius:14px}
+.lb-close{position:absolute;top:16px;right:16px;width:42px;height:42px;background:rgba(255,255,255,.1);border-radius:50%;border:none;color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb-nav{display:flex;gap:14px;margin-top:16px}
+.lb-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:24px;padding:9px 26px;border-radius:100px;cursor:pointer}
+.lb-btn:hover{background:var(--p)}
+.lb-ctr{color:rgba(255,255,255,.38);font-size:11px;margin-top:8px;letter-spacing:.1em}
+.lb-cap{color:rgba(255,255,255,.7);font-size:13px;margin-top:6px;font-weight:500}
+
+/* FOOTER */
+footer{text-align:center;padding:32px 20px 28px;border-top:1px solid var(--bd);background:var(--wh)}
+.footer-logo{height:48px;width:auto;object-fit:contain;margin:0 auto 12px;display:block}
+footer p{font-size:10px;letter-spacing:.12em;color:var(--mu);font-weight:600;line-height:2.2}
+footer a{color:var(--p);font-weight:700}
+
+@media(min-width:600px){.gal-slide{flex:0 0 calc(50% - 8px)}}
+@media(min-width:768px){
+  .inc-exc{grid-template-columns:1fr 1fr}
+  .addon-grid{grid-template-columns:1fr 1fr}
+  .hotel-main{height:300px}
+}
+@media(min-width:1024px){
+  .gal-slide{flex:0 0 calc(33.333% - 8px)}
+  .hotel-main{height:380px}
+}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="lbBg(event)">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <img class="lb-img" id="lbImg" src="" alt=""/>
+  <div class="lb-cap" id="lbCap"></div>
+  <div class="lb-nav">
+    <button class="lb-btn" onclick="lbMove(-1)">‹</button>
+    <button class="lb-btn" onclick="lbMove(1)">›</button>
+  </div>
+  <div class="lb-ctr" id="lbCtr"></div>
+</div>
+
+<!-- COVER PAGE -->
+<div class="cover" id="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <img class="cover-logo" src="logo.png" alt="KairaliTrails"/>
+    <div class="cover-badge">🏝️ KairaliTrails · Phuket Package 2026</div>
+    <div class="cover-title">ISLAND<br><span class="ta">RUSH</span><br><span class="tb">PHUKET</span></div>
+    <div class="cover-sub">AUG 2–6, 2026</div>
+    <div class="cover-pills">
+      <div class="cover-pill">✈️ BLR → HKT Direct</div>
+      <div class="cover-pill">4 Nights · 5 Days</div>
+      <div class="cover-pill">6E-1077 · Departs 06:30</div>
+    </div>
+    <div class="cover-price-lbl">ALL INCLUSIVE · STARTING FROM</div>
+    <div class="cover-amount">₹55,000</div>
+  </div>
+  <div class="cover-scroll">
+    <div style="font-size:20px;color:rgba(255,255,255,0.4)">↓</div>
+    <span>Scroll to explore</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <img class="nav-logo" src="logo.png" alt="KairaliTrails"/>
+    <div class="nav-pill">Island Rush</div>
+  </div>
+</nav>
+
+<!-- COUNTDOWN -->
+<div class="cd-bar">
+  <span style="font-size:14px">🔥</span>
+  <span class="cd-label">Deal Ends In</span>
+  <div class="cd-timer">
+    <div class="cd-block"><div class="cd-num" id="cdH">22</div><div class="cd-unit">Hrs</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-num" id="cdM">40</div><div class="cd-unit">Min</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-num" id="cdS">07</div><div class="cd-unit">Sec</div></div>
+  </div>
+  <span style="font-size:14px">🔥</span>
+</div>
+
+<!-- ITINERARY -->
+<div class="sw wh"><div class="sc">
+  <div class="slbl">📅 Day by Day</div>
+  <div class="sh">5-Day<br><span class="c">Itinerary.</span></div>
+  <div class="day-list">
+
+    <div class="day-item">
+      <div class="day-circle">D1</div>
+      <div style="flex:1">
+        <div class="day-date">Aug 2 · Sunday</div>
+        <div class="day-title">Arrival + Patong Night Walk</div>
+        <div class="day-time">✈️ 6E-1077 · BLR 06:30 → HKT</div>
+        <ul class="day-pts">
+          <li>Depart Bengaluru at 06:30 on IndiGo 6E-1077</li>
+          <li>Arrive Phuket International Airport (HKT)</li>
+          <li>Airport pickup arranged — transfer to hotel</li>
+          <li>Hotel check-in & freshen up</li>
+          <li>Leave hotel at 6:15 PM for Patong night walk</li>
+          <li>Covers Bangla Road, Patong Beach & Food Street</li>
+          <li>Back to hotel by 11:00 PM · Overnight stay</li>
+        </ul>
+        <div class="day-photos">
+          <div class="day-photo" onclick="openGallery('d1',0)"><img src="d1_patong.jpg" alt="Patong Beach"/></div>
+          <div class="day-photo" onclick="openGallery('d1',1)"><img src="d1_jungceylon.jpg" alt="Jungceylon"/></div>
+          <div class="day-photo" onclick="openGallery('d1',2)"><img src="d1_food.jpg" alt="Street Food"/></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-item">
+      <div class="day-circle">D2</div>
+      <div style="flex:1">
+        <div class="day-date">Aug 3 · Monday</div>
+        <div class="day-title">City Tour with Tiger</div>
+        <div class="day-time">Pickup 12:00 PM · Back 6:00 PM</div>
+        <div class="day-desc">6-hour city tour covering 8 major attractions. Includes Tiger Kingdom or Lion Kingdom.</div>
+        <ul class="day-pts">
+          <li>Chalong Temple</li>
+          <li>Big Buddha</li>
+          <li>Tiger Kingdom / Lion Kingdom</li>
+          <li>Honey Farm</li>
+          <li>Cashew Shop</li>
+          <li>Old Phuket Town</li>
+          <li>Free night — roam nearby</li>
+        </ul>
+        <div class="day-photos">
+          <div class="day-photo" onclick="openGallery('d2',0)"><img src="d2_temple.jpg" alt="Chalong Temple"/></div>
+          <div class="day-photo" onclick="openGallery('d2',1)"><img src="d2_bigbuddha.jpg" alt="Big Buddha"/></div>
+          <div class="day-photo" onclick="openGallery('d2',2)"><img src="d2_tiger.jpg" alt="Tiger Kingdom"/></div>
+          <div class="day-photo" onclick="openGallery('d2',3)"><img src="d2_honey.jpg" alt="Honey Farm"/></div>
+          <div class="day-photo" onclick="openGallery('d2',4)"><img src="d2_cashew.jpg" alt="Cashew Shop"/></div>
+          <div class="day-photo" onclick="openGallery('d2',5)"><img src="d2_oldtown.jpg" alt="Old Town"/></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-item">
+      <div class="day-circle">D3</div>
+      <div style="flex:1">
+        <div class="day-date">Aug 4 · Tuesday</div>
+        <div class="day-title">Phi Phi Island Tour</div>
+        <div class="day-time">Pickup 7:00 AM · Pier 9:00 AM · Back 6:00 PM</div>
+        <div class="day-desc">Full-day speedboat tour — 7 islands. Complimentary breakfast, snacks & drinks at pier. Lunch included on island.</div>
+        <ul class="day-pts">
+          <li>Loh Samah Bay</li>
+          <li>Maya Bay</li>
+          <li>Viking Cave</li>
+          <li>Monkey Beach</li>
+          <li>Khai Island</li>
+          <li>Pileh Lagoon</li>
+          <li>Phi Phi Don</li>
+        </ul>
+        <div class="day-photos">
+          <div class="day-photo" onclick="openGallery('d3',0)"><img src="d3_speedboat.jpg" alt="Speedboat"/></div>
+          <div class="day-photo" onclick="openGallery('d3',1)"><img src="d3_maya.jpg" alt="Maya Bay"/></div>
+          <div class="day-photo" onclick="openGallery('d3',2)"><img src="d3_viking.jpg" alt="Viking Cave"/></div>
+          <div class="day-photo" onclick="openGallery('d3',3)"><img src="d3_monkey.jpg" alt="Monkey Beach"/></div>
+          <div class="day-photo" onclick="openGallery('d3',4)"><img src="d3_bamboo.jpg" alt="Bamboo Island"/></div>
+          <div class="day-photo" onclick="openGallery('d3',5)"><img src="d3_lohsamah.jpg" alt="Loh Samah Bay"/></div>
+          <div class="day-photo" onclick="openGallery('d3',6)"><img src="d3_snorkel.jpg" alt="Snorkelling"/></div>
+          <div class="day-photo" onclick="openGallery('d3',7)"><img src="d3_pileh.jpg" alt="Pileh Lagoon"/></div>
+          <div class="day-photo" onclick="openGallery('d3',8)"><img src="d3_lunch.jpg" alt="Island Lunch"/></div>
+        </div>
+        <div class="scuba-card">
+          <div class="scuba-img" onclick="openGallery('scuba',0)"><img src="addon_scuba.jpg" alt="Scuba"/></div>
+          <div class="scuba-info">
+            <h4>🤿 Scuba Diving <span class="addon-tag">Add-On</span></h4>
+            <p>Underwater Phi Phi · Above 9 years only</p>
+            <span class="scuba-badge">₹6,000 / person</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-item">
+      <div class="day-circle">D4</div>
+      <div style="flex:1">
+        <div class="day-date">Aug 5 · Wednesday</div>
+        <div class="day-title">Free Day / Explore by Own</div>
+        <div class="day-desc">Your day! Relax at the hotel pool, explore nearby streets, shop for souvenirs or pick an add-on activity.</div>
+        <ul class="day-pts">
+          <li>Hotel pool & leisure time</li>
+          <li>Local shopping — markets & souvenirs</li>
+          <li>Night market & street food</li>
+          <li>Optional add-on activities available</li>
+        </ul>
+        <div class="day-photos">
+          <div class="day-photo" onclick="openGallery('d4',0)"><img src="d4_shop.jpg" alt="Shopping"/></div>
+          <div class="day-photo" onclick="openGallery('d4',1)"><img src="d4_night.jpg" alt="Night Market"/></div>
+          <div class="day-photo" onclick="openGallery('d4',2)"><img src="d4_mall.jpg" alt="Mall"/></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-item">
+      <div class="day-circle">D5</div>
+      <div style="flex:1">
+        <div class="day-date">Aug 6 · Thursday</div>
+        <div class="day-title">Checkout & Airport Transfer</div>
+        <div class="day-time">✈️ 6E-1076 · HKT 12:45 → BLR</div>
+        <ul class="day-pts">
+          <li>Hotel breakfast included</li>
+          <li>Hotel checkout</li>
+          <li>Transfer to Phuket International Airport</li>
+          <li>Depart HKT at 12:45 on IndiGo 6E-1076</li>
+          <li>Arrive Bengaluru · Memories for a lifetime ✈️</li>
+        </ul>
+        <div class="day-photos" style="grid-template-columns:1fr">
+          <div class="day-photo wide" onclick="openGallery('d5',0)"><img src="d5_airport.jpg" alt="Airport"/></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div></div>
+
+<!-- ADD-ONS -->
+<div class="sw dk"><div class="sc">
+  <div class="slbl">⚡ Optional Add-Ons</div>
+  <div class="sh">Upgrade Your<br><span class="c">Experience.</span></div>
+  <div class="addon-grid">
+    <div class="addon-card">
+      <div class="addon-head"><h3>🏝️ James Bond Island</h3><span class="addon-day-tag">Day 4</span></div>
+      <div class="addon-photos">
+        <div class="addon-ph" onclick="openGallery('jb',0)"><img src="addon_jb1.jpg" alt="James Bond Island"/></div>
+        <div class="addon-ph" onclick="openGallery('jb',1)"><img src="addon_jb2.jpg" alt="Sea Cave"/></div>
+        <div class="addon-ph" onclick="openGallery('jb',2)"><img src="addon_jb3.jpg" alt="Floating Village"/></div>
+      </div>
+      <div class="addon-prices">
+        <div class="addon-pi"><div class="who">Child (4–10 yrs)</div><div class="how">₹4,500</div></div>
+        <div class="addon-pi"><div class="who">Adult (10+ yrs)</div><div class="how">₹4,800</div></div>
+      </div>
+      <div class="addon-desc">Transfer + Lunch included. Covers James Bond Rock, Phang Nga Bay, sea cave kayaking & Koh Panyee floating village.</div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-head"><h3>🏍️ Adventure Ride</h3><span class="addon-day-tag">Day 4</span></div>
+      <div class="addon-photos">
+        <div class="addon-ph" onclick="openGallery('adv',0)"><img src="addon_atv.jpg" alt="ATV"/></div>
+        <div class="addon-ph" onclick="openGallery('adv',1)"><img src="addon_raft.jpg" alt="Rafting"/></div>
+        <div class="addon-ph" onclick="openGallery('adv',2)"><img src="addon_cave.jpg" alt="Cave"/></div>
+      </div>
+      <div class="addon-prices">
+        <div class="addon-pi"><div class="who">Child (4–10 yrs)</div><div class="how">₹3,500</div></div>
+        <div class="addon-pi"><div class="who">Adult (10+ yrs)</div><div class="how">₹4,000</div></div>
+      </div>
+      <div class="addon-desc">Transfer included. ATV jungle ride, river rafting & Monkey Cave (Suwankuha Temple) visit.</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- INCLUSIONS & EXCLUSIONS -->
+<div class="sw wh"><div class="sc">
+  <div class="slbl">📋 Package Details</div>
+  <div class="sh">What's<br><span class="c">Included.</span></div>
+  <div class="inc-exc">
+    <div class="inc-box incl">
+      <h3>✅ Inclusions</h3>
+      <ul class="inc-list">
+        <li>Direct flights BLR ↔ HKT (20 kg baggage)</li>
+        <li>Hotel accommodation (double sharing)</li>
+        <li>Rooftop swimming pool access</li>
+        <li>Airport pickup & drop</li>
+        <li>All local transfers & transportation</li>
+        <li>Patong night walk with guide</li>
+        <li>City tour — 8 attractions (6 hrs)</li>
+        <li>Tiger Kingdom / Lion Kingdom entry</li>
+        <li>Phi Phi Island speedboat tour</li>
+        <li>National Park & island entry fees</li>
+        <li>Complimentary breakfast at pier (D3)</li>
+        <li>Lunch on island (D3)</li>
+        <li>4 hotel breakfasts included</li>
+        <li>Snacks & drinks on speedboat</li>
+      </ul>
+    </div>
+    <div class="inc-box excl">
+      <h3>❌ Exclusions</h3>
+      <ul class="inc-list">
+        <li>Personal expenses, shopping & tips</li>
+        <li>Any services not mentioned in inclusions</li>
+      </ul>
+    </div>
+  </div>
+</div></div>
+
+<!-- PRICING -->
+<div class="sw off"><div class="sc">
+  <div class="slbl">💰 Pricing</div>
+  <div class="sh">Package<br><span class="c">Price.</span></div>
+  <div class="price-tbl">
+    <div class="ptr hdr"><span>Category</span><span>Price Per Person</span></div>
+    <div class="ptr"><span class="ptr-lbl">👨 Adult</span><span class="ptr-amt">₹55,000</span></div>
+    <div class="ptr"><span class="ptr-lbl">👦 5–11 Years</span><span class="ptr-amt">₹48,000</span></div>
+    <div class="ptr"><span class="ptr-lbl">👶 2–4 Years</span><span class="ptr-amt">₹39,000</span></div>
+    <div class="ptr"><span class="ptr-lbl">🍼 Infant</span><span class="ptr-amt">₹5,000</span></div>
+  </div>
+  <div class="pay-policy">
+    <h3>💳 Payment Policy</h3>
+    <div class="pay-steps">
+      <div class="psc"><div class="psc-lbl">At Booking</div><div class="psc-pct">70%</div><div class="psc-sub">Confirms your spot instantly</div></div>
+      <div class="psc b"><div class="psc-lbl">20 Days Before Trip</div><div class="psc-pct">30%</div><div class="psc-sub">Due by July 13, 2026</div></div>
+    </div>
+  </div>
+  <div class="web-box">
+    <p>🌐 Book now at our website</p>
+    <a class="web-btn" href="https://www.kairalitrails.com" target="_blank">kairalitrails.com</a>
+  </div>
+</div></div>
+
+<!-- HOTEL + MEALS -->
+<div class="sw wh"><div class="sc">
+  <div class="slbl">🏨 Stay & Meals</div>
+  <div class="sh">Hotel &<br><span class="c">Breakfast.</span></div>
+  <div class="hotel-wrap">
+    <div class="hotel-main" onclick="openGallery('hotel',0)"><img src="hotel_pool.png" alt="Pool"/><div class="itag">🏊 Rooftop Pool</div></div>
+    <div class="hotel-sub">
+      <div class="hotel-card" onclick="openGallery('hotel',1)"><img src="hotel_room.png" alt="Room"/><div class="itag">🛏️ Double Room</div></div>
+      <div class="hotel-card" onclick="openGallery('hotel',2)"><img src="hotel_bath.png" alt="Bath"/><div class="itag">🚿 En-Suite</div></div>
+    </div>
+  </div>
+  <div class="perks">
+    <div class="perk">✅ Double Sharing</div>
+    <div class="perk">✅ Rooftop Pool</div>
+    <div class="perk">✅ 4 Nights</div>
+    <div class="perk">✅ City Centre</div>
+    <div class="perk">🍳 4 Breakfasts</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-ph" onclick="openGallery('food',0)"><img src="food_croissant.png" alt="Croissants"/><div class="meal-lbl">Croissants</div></div>
+    <div class="meal-ph" onclick="openGallery('food',1)"><img src="food_eggs.png" alt="Eggs"/><div class="meal-lbl">Hot Items</div></div>
+    <div class="meal-ph" onclick="openGallery('food',2)"><img src="food_juice.png" alt="Juices"/><div class="meal-lbl">Fresh Juices</div></div>
+  </div>
+  <div class="meal-badges">
+    <div class="mbg"><div class="mbg-n">4</div><h3>Breakfasts</h3></div>
+    <div class="mbg"><div class="mbg-n">1</div><h3>Island Lunch</h3></div>
+  </div>
+</div></div>
+
+<!-- HAPPY TRAVELLERS -->
+<div class="sw dk"><div class="sc">
+  <div class="slbl">😊 Happy Travellers</div>
+  <div class="sh">Real People,<br><span class="c">Real Memories.</span></div>
+  <div class="gal-outer">
+    <button class="gal-arrow" onclick="galMove(-1)">&#8249;</button>
+    <div class="gal-track" id="galTrack">
+      <div class="gal-slide" onclick="openGallery('hap',0)"><img src="h1.jpg" alt=""/><div class="gal-cap">Jungceylon</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',1)"><img src="h2.jpg" alt=""/><div class="gal-cap">Happy Travellers</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',2)"><img src="h3.jpg" alt=""/><div class="gal-cap">Phi Phi Island</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',3)"><img src="h4.jpg" alt=""/><div class="gal-cap">Family Trip</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',4)"><img src="h5.jpg" alt=""/><div class="gal-cap">Island Vibes</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',5)"><img src="h6.jpg" alt=""/><div class="gal-cap">Old Phuket Town</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',6)"><img src="h7.jpg" alt=""/><div class="gal-cap">Maya Bay</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',7)"><img src="h8.jpg" alt=""/><div class="gal-cap">Phi Phi Lagoon</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',8)"><img src="h9.jpg" alt=""/><div class="gal-cap">Tiger Kingdom</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',9)"><img src="h10.jpg" alt=""/><div class="gal-cap">Tiger Kingdom</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',10)"><img src="h11.jpg" alt=""/><div class="gal-cap">Phuket Arrival</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',11)"><img src="h12.jpg" alt=""/><div class="gal-cap">Island Vibes</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',12)"><img src="h13.jpg" alt=""/><div class="gal-cap">Honey Farm</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',13)"><img src="h14.jpg" alt=""/><div class="gal-cap">Kairalitrails Family</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',14)"><img src="h15.jpg" alt=""/><div class="gal-cap">Tiger Kingdom</div></div>
+    </div>
+    <button class="gal-arrow" onclick="galMove(1)">&#8250;</button>
+  </div>
+  <div class="gal-dots" id="galDots"></div>
+  <div class="hint">👆 Tap photo · Swipe or use arrows</div>
+</div></div>
+
+<!-- TERMS -->
+<div class="sw off"><div class="sc">
+  <div class="slbl">📋 Terms & Conditions</div>
+  <div class="tbox">
+    <h3>📋 Important Notes</h3>
+    <ul class="tlist">
+      <li>Passport valid for 6+ months from departure, minimum 3 blank pages required.</li>
+      <li>70% payment at booking to confirm slot. Remaining 30% due by July 13, 2026.</li>
+      <li>Booking once confirmed cannot be cancelled or modified.</li>
+      <li>Full package cost is non-refundable in case of no-show or cancellation.</li>
+      <li>Standard check-in: 15:00 hrs. Check-out: 11:00 hrs.</li>
+      <li>Accommodation provided subject to availability — cannot be selected in advance.</li>
+      <li>Additional sightseeing beyond itinerary incurs extra charges.</li>
+      <li>Airline delays or cancellations are beyond our control.</li>
+      <li>Please be punctual for all transfers and tours.</li>
+      <li>Rates subject to change due to fuel or govt. levies.</li>
+      <li>Tour itineraries may change due to weather or unforeseen circumstances.</li>
+      <li>Seats auto-assigned at check-in. Specific selection may require extra charges.</li>
+      <li>No refund for unutilised services.</li>
+      <li>Add-on activities are at additional cost and must be booked separately.</li>
+    </ul>
+  </div>
+</div></div>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-logo" src="logo.png" alt="KairaliTrails"/>
+  <p>KAIRALITRAILS · PHUKET ISLAND RUSH 2026<br>
+  BLR ✈ PHUKET · AUG 2–6, 2026 · DIRECT FLIGHT<br>
+  <a href="https://www.kairalitrails.com" target="_blank">www.kairalitrails.com</a></p>
+</footer>
+
+<script>
+/* NAV on scroll */
+window.addEventListener('scroll', function(){
+  var nav = document.getElementById('mainNav');
+  var cover = document.getElementById('cover');
+  nav.style.display = window.scrollY > cover.offsetHeight - 80 ? 'block' : 'none';
+});
+
+/* COUNTDOWN */
+(function(){
+  var end = Date.now() + ((22*3600 + 40*60 + 7) * 1000);
+  function tick(){
+    var diff = Math.max(0, end - Date.now());
+    var h = Math.floor(diff/3600000);
+    var m = Math.floor((diff%3600000)/60000);
+    var s = Math.floor((diff%60000)/1000);
+    document.getElementById('cdH').textContent = String(h).padStart(2,'0');
+    document.getElementById('cdM').textContent = String(m).padStart(2,'0');
+    document.getElementById('cdS').textContent = String(s).padStart(2,'0');
+    if(diff>0) setTimeout(tick,1000);
+  }
+  tick();
+})();
+
+/* LIGHTBOX */
+var galleries={
+  hotel:[['hotel_pool.png','Rooftop Pool'],['hotel_room.png','Double Room'],['hotel_bath.png','En-Suite']],
+  food:[['food_croissant.png','Croissants'],['food_eggs.png','Hot Items'],['food_juice.png','Fresh Juices']],
+  d1:[['d1_patong.jpg','Patong Beach'],['d1_jungceylon.jpg','Jungceylon Mall'],['d1_food.jpg','Street Food']],
+  d2:[['d2_temple.jpg','Chalong Temple'],['d2_bigbuddha.jpg','Big Buddha'],['d2_tiger.jpg','Tiger Kingdom'],['d2_honey.jpg','Honey Farm'],['d2_cashew.jpg','Cashew Shop'],['d2_oldtown.jpg','Old Phuket Town']],
+  d3:[['d3_speedboat.jpg','Speedboat'],['d3_maya.jpg','Maya Bay'],['d3_viking.jpg','Viking Cave'],['d3_monkey.jpg','Monkey Beach'],['d3_bamboo.jpg','Bamboo Island'],['d3_lohsamah.jpg','Loh Samah Bay'],['d3_snorkel.jpg','Snorkelling'],['d3_pileh.jpg','Pileh Lagoon'],['d3_lunch.jpg','Island Lunch']],
+  scuba:[['addon_scuba.jpg','Scuba Diving']],
+  d4:[['d4_shop.jpg','Shopping Market'],['d4_night.jpg','Night Market'],['d4_mall.jpg','Jungceylon Mall']],
+  d5:[['d5_airport.jpg','Airport Transfer']],
+  jb:[['addon_jb1.jpg','James Bond Island'],['addon_jb2.jpg','Sea Cave Kayaking'],['addon_jb3.jpg','Koh Panyee Floating Village']],
+  adv:[['addon_atv.jpg','ATV Jungle Ride'],['addon_raft.jpg','River Rafting'],['addon_cave.jpg','Monkey Cave Temple']],
+  hap:[['h1.jpg','Jungceylon'],['h2.jpg','Happy Travellers'],['h3.jpg','Phi Phi Island'],['h4.jpg','Family Trip'],['h5.jpg','Island Vibes'],['h6.jpg','Old Phuket Town'],['h7.jpg','Maya Bay'],['h8.jpg','Phi Phi Lagoon'],['h9.jpg','Tiger Kingdom'],['h10.jpg','Tiger Kingdom'],['h11.jpg','Phuket Arrival'],['h12.jpg','Island Vibes'],['h13.jpg','Honey Farm'],['h14.jpg','Kairalitrails Family'],['h15.jpg','Tiger Kingdom']]
+};
+var curGal=null,curIdx=0,lbSX=0;
+function openGallery(g,i){curGal=g;curIdx=i;showLb();}
+function showLb(){
+  var g=galleries[curGal];
+  document.getElementById('lbImg').src=g[curIdx][0];
+  document.getElementById('lbCap').textContent=g[curIdx][1];
+  document.getElementById('lbCtr').textContent=(curIdx+1)+' / '+g.length;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+function lbMove(d){var g=galleries[curGal];curIdx=(curIdx+d+g.length)%g.length;showLb();}
+function lbBg(e){if(e.target===document.getElementById('lb'))closeLb();}
+var lb=document.getElementById('lb');
+lb.addEventListener('touchstart',function(e){lbSX=e.touches[0].clientX;},{passive:true});
+lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-lbSX;if(Math.abs(dx)>50)lbMove(dx<0?1:-1);},{passive:true});
+document.addEventListener('keydown',function(e){
+  if(!document.getElementById('lb').classList.contains('open'))return;
+  if(e.key==='ArrowRight')lbMove(1);if(e.key==='ArrowLeft')lbMove(-1);if(e.key==='Escape')closeLb();
+});
+
+/* GALLERY SLIDER */
+var galIdx=0,galSX=0;
+var track=document.getElementById('galTrack');
+var slides=track?track.querySelectorAll('.gal-slide'):[];
+var dotsEl=document.getElementById('galDots');
+slides.forEach(function(_,i){
+  var d=document.createElement('div');
+  d.className='gal-dot'+(i===0?' on':'');
+  d.onclick=function(){galTo(i);};
+  dotsEl.appendChild(d);
+});
+function getVis(){return window.innerWidth<600?1:window.innerWidth<1024?2:3;}
+function galTo(idx){
+  var vis=getVis();
+  var max=slides.length-vis;
+  galIdx=Math.max(0,Math.min(idx,max));
+  var w=slides[0]?slides[0].offsetWidth+10:0;
+  track.scrollLeft=galIdx*w;
+  var dots=dotsEl.querySelectorAll('.gal-dot');
+  dots.forEach(function(d,i){d.classList.toggle('on',i===galIdx);});
+}
+function galMove(dir){galTo(galIdx+dir);}
+if(track){
+  track.addEventListener('touchstart',function(e){galSX=e.touches[0].clientX;},{passive:true});
+  track.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-galSX;if(Math.abs(dx)>40)galMove(dx<0?1:-1);},{passive:true});
+}
+window.addEventListener('resize',function(){galTo(galIdx);});
+</script>
+</body>
+</html>
