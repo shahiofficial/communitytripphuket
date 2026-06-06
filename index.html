@@ -11,145 +11,39 @@ html,body{width:100%;overflow-x:hidden}
 body{
   font-family:'Poppins',sans-serif;
   background:linear-gradient(160deg,#041f24 0%,#073038 55%,#0a4050 100%);
-  min-height:100vh;
-  min-height:100dvh;
+  min-height:100vh;min-height:100dvh;
   padding:28px 16px 48px;
 }
-
 .wrap{width:100%;max-width:780px;margin:0 auto}
-
-/* LOGO */
 .logo-area{text-align:center;margin-bottom:24px}
-.logo-img{
-  height:52px;width:auto;
-  object-fit:contain;
-  display:block;margin:0 auto 10px;
-}
-.logo-tag{
-  font-size:10px;color:rgba(255,255,255,0.3);
-  letter-spacing:0.18em;text-transform:uppercase;
-}
-
-/* HEADING */
-.heading{
-  font-weight:800;
-  font-size:clamp(24px,6.5vw,42px);
-  color:#fff;text-align:center;
-  margin-bottom:6px;letter-spacing:-0.5px;line-height:1.05;
-}
+.logo-img{height:52px;width:auto;object-fit:contain;display:block;margin:0 auto 10px}
+.logo-tag{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.18em;text-transform:uppercase}
+.heading{font-weight:800;font-size:clamp(24px,6.5vw,42px);color:#fff;text-align:center;margin-bottom:6px;letter-spacing:-0.5px;line-height:1.05}
 .heading span{color:#24fbaa}
-.subhead{
-  font-size:13px;color:rgba(255,255,255,0.35);
-  text-align:center;margin-bottom:28px;
-}
-
-/* ── CARDS: single column on mobile ── */
-.cards{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  width:100%;
-}
-
-.card{
-  width:100%;
-  background:rgba(255,255,255,0.06);
-  border:1.5px solid rgba(255,255,255,0.1);
-  border-radius:18px;
-  overflow:hidden;
-  text-decoration:none;
-  color:inherit;
-  display:flex;
-  flex-direction:column;
-  transition:transform 0.2s,border-color 0.2s;
-}
+.subhead{font-size:13px;color:rgba(255,255,255,0.35);text-align:center;margin-bottom:28px}
+.cards{display:flex;flex-direction:column;gap:14px;width:100%}
+.card{width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform 0.2s,border-color 0.2s}
 .card:active{transform:scale(0.98)}
-
-/* IMAGE — fixed height, never clips weird */
-.card-img-wrap{
-  width:100%;
-  height:200px;
-  overflow:hidden;
-  flex-shrink:0;
-  background:#0a3a42;
-}
-.card-img-wrap img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  display:block;
-}
-
+.card-img-wrap{width:100%;height:200px;overflow:hidden;flex-shrink:0;background:#0a3a42}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .card-body{padding:18px 16px 20px;flex:1;display:flex;flex-direction:column}
-
-.card-badge{
-  display:inline-block;
-  font-size:9px;font-weight:700;
-  letter-spacing:0.12em;text-transform:uppercase;
-  color:#24fbaa;
-  background:rgba(36,251,170,0.1);
-  border:1px solid rgba(36,251,170,0.22);
-  border-radius:100px;padding:3px 11px;
-  margin-bottom:9px;width:fit-content;
-}
-.card-title{
-  font-weight:800;
-  font-size:clamp(20px,5vw,26px);
-  color:#fff;margin-bottom:3px;
-  letter-spacing:-0.5px;line-height:1.05;
-}
-.card-date{
-  font-size:12px;color:rgba(255,255,255,0.4);
-  margin-bottom:12px;
-}
-.card-price{
-  font-weight:800;
-  font-size:clamp(26px,6vw,34px);
-  color:#f3792a;letter-spacing:-1px;line-height:1;
-  margin-bottom:2px;
-}
-.card-price-sub{
-  font-size:10px;color:rgba(255,255,255,0.28);
-  margin-bottom:14px;
-}
+.card-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#24fbaa;background:rgba(36,251,170,0.1);border:1px solid rgba(36,251,170,0.22);border-radius:100px;padding:3px 11px;margin-bottom:9px;width:fit-content}
+.card-title{font-weight:800;font-size:clamp(20px,5vw,26px);color:#fff;margin-bottom:3px;letter-spacing:-0.5px;line-height:1.05}
+.card-date{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:12px}
+.card-price{font-weight:800;font-size:clamp(26px,6vw,34px);color:#f3792a;letter-spacing:-1px;line-height:1;margin-bottom:2px}
+.card-price-sub{font-size:10px;color:rgba(255,255,255,0.28);margin-bottom:14px}
 .card-pts{list-style:none;margin-bottom:18px;flex:1}
-.card-pts li{
-  font-size:12px;color:rgba(255,255,255,0.48);
-  padding:3px 0 3px 14px;position:relative;line-height:1.4;
-}
-.card-pts li::before{
-  content:'→';position:absolute;left:0;
-  color:#12b5c9;font-size:10px;top:4px;
-}
-.card-cta{
-  display:block;width:100%;
-  background:#0496a5;color:#fff;
-  font-family:'Poppins',sans-serif;
-  font-size:12px;font-weight:700;
-  letter-spacing:0.08em;text-transform:uppercase;
-  padding:12px;border-radius:100px;
-  border:none;cursor:pointer;
-  text-align:center;text-decoration:none;
-}
-
-/* FOOTER */
-.foot{
-  text-align:center;margin-top:24px;
-  font-size:10px;color:rgba(255,255,255,0.17);
-  letter-spacing:0.1em;
-}
+.card-pts li{font-size:12px;color:rgba(255,255,255,0.48);padding:3px 0 3px 14px;position:relative;line-height:1.4}
+.card-pts li::before{content:'→';position:absolute;left:0;color:#12b5c9;font-size:10px;top:4px}
+.card-cta{display:block;width:100%;background:#0496a5;color:#fff;font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:12px;border-radius:100px;border:none;cursor:pointer;text-align:center;text-decoration:none}
+.foot{text-align:center;margin-top:24px;font-size:10px;color:rgba(255,255,255,0.17);letter-spacing:0.1em}
 .foot a{color:rgba(4,150,165,0.55);text-decoration:none}
-
-/* ── TABLET 600px+ : side by side ── */
 @media(min-width:600px){
   body{padding:40px 24px 56px}
   .cards{flex-direction:row;align-items:stretch}
   .card{flex:1;min-width:0}
   .card-img-wrap{height:220px}
 }
-
-/* ── DESKTOP 1024px+ ── */
 @media(min-width:1024px){
   body{padding:60px 40px 80px}
   .card-img-wrap{height:260px}
@@ -159,24 +53,17 @@ body{
 </head>
 <body>
 <div class="wrap">
-
-  <!-- LOGO -->
   <div class="logo-area">
-    <img class="logo-img" src="logo.png" alt="KairaliTrails"/>
+    <img class="logo-img" src="logo.png" alt="KairaliTrails" loading="eager"/>
     <div class="logo-tag">Community Trips · Phuket 2026</div>
   </div>
-
-  <!-- HEADING -->
   <div class="heading">Choose Your <span>Adventure</span></div>
   <div class="subhead">Two epic Phuket packages — pick your dates</div>
-
-  <!-- CARDS -->
   <div class="cards">
-
-    <!-- JULY — PHUKET SQUAD -->
+    <!-- JULY — rafting cover -->
     <a class="card" href="july/index.html">
       <div class="card-img-wrap">
-        <img src="july/hotel_pool.png" alt="Phuket Squad"/>
+        <img src="july/d3_rafting.jpg" alt="Phuket Squad" loading="eager" fetchpriority="high"/>
       </div>
       <div class="card-body">
         <div class="card-badge">🌴 GenZ Community Trip</div>
@@ -194,11 +81,10 @@ body{
         <span class="card-cta">View Package →</span>
       </div>
     </a>
-
-    <!-- AUGUST — ISLAND RUSH -->
+    <!-- AUGUST -->
     <a class="card" href="august/index.html">
       <div class="card-img-wrap">
-        <img src="august/cover.jpg" alt="Island Rush"/>
+        <img src="august/cover.jpg" alt="Island Rush" loading="eager" fetchpriority="high"/>
       </div>
       <div class="card-body">
         <div class="card-badge">🏝️ Family & All Ages</div>
@@ -216,15 +102,11 @@ body{
         <span class="card-cta">View Package →</span>
       </div>
     </a>
-
   </div>
-
-  <!-- FOOTER -->
   <div class="foot">
     <a href="https://www.kairalitrails.com" target="_blank">www.kairalitrails.com</a>
     &nbsp;·&nbsp; Phuket 2026
   </div>
-
 </div>
 </body>
 </html>
