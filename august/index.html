@@ -252,7 +252,7 @@ footer a{color:var(--p);font-weight:700}
 <!-- LIGHTBOX -->
 <div class="lb" id="lb" onclick="lbBg(event)">
   <button class="lb-close" onclick="closeLb()">✕</button>
-  <img class="lb-img" id="lbImg" src="" alt=""/>
+  <img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""/>
   <div class="lb-cap" id="lbCap"></div>
   <div class="lb-nav">
     <button class="lb-btn" onclick="lbMove(-1)">‹</button>
@@ -266,7 +266,7 @@ footer a{color:var(--p);font-weight:700}
   <div class="cover-bg"></div>
   <div class="cover-overlay"></div>
   <div class="cover-content">
-    <img class="cover-logo" src="logo.png" alt="KairaliTrails"/>
+    <img loading="eager" fetchpriority="high" class="cover-logo" src="logo.png" alt="KairaliTrails"/>
     <div class="cover-badge">🏝️ KairaliTrails · Phuket Package 2026</div>
     <div class="cover-title">ISLAND<br><span class="ta">RUSH</span><br><span class="tb">PHUKET</span></div>
     <div class="cover-sub">AUG 2–6, 2026</div>
@@ -287,7 +287,7 @@ footer a{color:var(--p);font-weight:700}
 <!-- NAV -->
 <nav id="mainNav">
   <div class="nav-inner">
-    <img class="nav-logo" src="logo.png" alt="KairaliTrails"/>
+    <img loading="eager" fetchpriority="high" class="nav-logo" src="logo.png" alt="KairaliTrails"/>
     <div class="nav-pill">Island Rush</div>
   </div>
 </nav>
@@ -328,9 +328,9 @@ footer a{color:var(--p);font-weight:700}
           <li>Back to hotel by 11:00 PM · Overnight stay</li>
         </ul>
         <div class="day-photos">
-          <div class="day-photo" onclick="openGallery('d1',0)"><img src="d1_patong.jpg" alt="Patong Beach"/></div>
-          <div class="day-photo" onclick="openGallery('d1',1)"><img src="d1_jungceylon.jpg" alt="Jungceylon"/></div>
-          <div class="day-photo" onclick="openGallery('d1',2)"><img src="d1_food.jpg" alt="Street Food"/></div>
+          <div class="day-photo" onclick="openGallery('d1',0)"><img loading="lazy" decoding="async" src="d1_patong.jpg" alt="Patong Beach"/></div>
+          <div class="day-photo" onclick="openGallery('d1',1)"><img loading="lazy" decoding="async" src="d1_jungceylon.jpg" alt="Jungceylon"/></div>
+          <div class="day-photo" onclick="openGallery('d1',2)"><img loading="lazy" decoding="async" src="d1_food.jpg" alt="Street Food"/></div>
         </div>
       </div>
     </div>
@@ -352,12 +352,12 @@ footer a{color:var(--p);font-weight:700}
           <li>Free night — roam nearby</li>
         </ul>
         <div class="day-photos">
-          <div class="day-photo" onclick="openGallery('d2',0)"><img src="d2_temple.jpg" alt="Chalong Temple"/></div>
-          <div class="day-photo" onclick="openGallery('d2',1)"><img src="d2_bigbuddha.jpg" alt="Big Buddha"/></div>
-          <div class="day-photo" onclick="openGallery('d2',2)"><img src="d2_tiger.jpg" alt="Tiger Kingdom"/></div>
-          <div class="day-photo" onclick="openGallery('d2',3)"><img src="d2_honey.jpg" alt="Honey Farm"/></div>
-          <div class="day-photo" onclick="openGallery('d2',4)"><img src="d2_cashew.jpg" alt="Cashew Shop"/></div>
-          <div class="day-photo" onclick="openGallery('d2',5)"><img src="d2_oldtown.jpg" alt="Old Town"/></div>
+          <div class="day-photo" onclick="openGallery('d2',0)"><img loading="lazy" decoding="async" src="d2_temple.jpg" alt="Chalong Temple"/></div>
+          <div class="day-photo" onclick="openGallery('d2',1)"><img loading="lazy" decoding="async" src="d2_bigbuddha.jpg" alt="Big Buddha"/></div>
+          <div class="day-photo" onclick="openGallery('d2',2)"><img loading="lazy" decoding="async" src="d2_tiger.jpg" alt="Tiger Kingdom"/></div>
+          <div class="day-photo" onclick="openGallery('d2',3)"><img loading="lazy" decoding="async" src="d2_honey.jpg" alt="Honey Farm"/></div>
+          <div class="day-photo" onclick="openGallery('d2',4)"><img loading="lazy" decoding="async" src="d2_cashew.jpg" alt="Cashew Shop"/></div>
+          <div class="day-photo" onclick="openGallery('d2',5)"><img loading="lazy" decoding="async" src="d2_oldtown.jpg" alt="Old Town"/></div>
         </div>
       </div>
     </div>
@@ -379,18 +379,18 @@ footer a{color:var(--p);font-weight:700}
           <li>Phi Phi Don</li>
         </ul>
         <div class="day-photos">
-          <div class="day-photo" onclick="openGallery('d3',0)"><img src="d3_speedboat.jpg" alt="Speedboat"/></div>
-          <div class="day-photo" onclick="openGallery('d3',1)"><img src="d3_maya.jpg" alt="Maya Bay"/></div>
-          <div class="day-photo" onclick="openGallery('d3',2)"><img src="d3_viking.jpg" alt="Viking Cave"/></div>
-          <div class="day-photo" onclick="openGallery('d3',3)"><img src="d3_monkey.jpg" alt="Monkey Beach"/></div>
-          <div class="day-photo" onclick="openGallery('d3',4)"><img src="d3_bamboo.jpg" alt="Bamboo Island"/></div>
-          <div class="day-photo" onclick="openGallery('d3',5)"><img src="d3_lohsamah.jpg" alt="Loh Samah Bay"/></div>
-          <div class="day-photo" onclick="openGallery('d3',6)"><img src="d3_snorkel.jpg" alt="Snorkelling"/></div>
-          <div class="day-photo" onclick="openGallery('d3',7)"><img src="d3_pileh.jpg" alt="Pileh Lagoon"/></div>
-          <div class="day-photo" onclick="openGallery('d3',8)"><img src="d3_lunch.jpg" alt="Island Lunch"/></div>
+          <div class="day-photo" onclick="openGallery('d3',0)"><img loading="lazy" decoding="async" src="d3_speedboat.jpg" alt="Speedboat"/></div>
+          <div class="day-photo" onclick="openGallery('d3',1)"><img loading="lazy" decoding="async" src="d3_maya.jpg" alt="Maya Bay"/></div>
+          <div class="day-photo" onclick="openGallery('d3',2)"><img loading="lazy" decoding="async" src="d3_viking.jpg" alt="Viking Cave"/></div>
+          <div class="day-photo" onclick="openGallery('d3',3)"><img loading="lazy" decoding="async" src="d3_monkey.jpg" alt="Monkey Beach"/></div>
+          <div class="day-photo" onclick="openGallery('d3',4)"><img loading="lazy" decoding="async" src="d3_bamboo.jpg" alt="Bamboo Island"/></div>
+          <div class="day-photo" onclick="openGallery('d3',5)"><img loading="lazy" decoding="async" src="d3_lohsamah.jpg" alt="Loh Samah Bay"/></div>
+          <div class="day-photo" onclick="openGallery('d3',6)"><img loading="lazy" decoding="async" src="d3_snorkel.jpg" alt="Snorkelling"/></div>
+          <div class="day-photo" onclick="openGallery('d3',7)"><img loading="lazy" decoding="async" src="d3_pileh.jpg" alt="Pileh Lagoon"/></div>
+          <div class="day-photo" onclick="openGallery('d3',8)"><img loading="lazy" decoding="async" src="d3_lunch.jpg" alt="Island Lunch"/></div>
         </div>
         <div class="scuba-card">
-          <div class="scuba-img" onclick="openGallery('scuba',0)"><img src="addon_scuba.jpg" alt="Scuba"/></div>
+          <div class="scuba-img" onclick="openGallery('scuba',0)"><img loading="lazy" decoding="async" src="addon_scuba.jpg" alt="Scuba"/></div>
           <div class="scuba-info">
             <h4>🤿 Scuba Diving <span class="addon-tag">Add-On</span></h4>
             <p>Underwater Phi Phi · Above 9 years only</p>
@@ -413,9 +413,9 @@ footer a{color:var(--p);font-weight:700}
           <li>Optional add-on activities available</li>
         </ul>
         <div class="day-photos">
-          <div class="day-photo" onclick="openGallery('d4',0)"><img src="d4_shop.jpg" alt="Shopping"/></div>
-          <div class="day-photo" onclick="openGallery('d4',1)"><img src="d4_night.jpg" alt="Night Market"/></div>
-          <div class="day-photo" onclick="openGallery('d4',2)"><img src="d4_mall.jpg" alt="Mall"/></div>
+          <div class="day-photo" onclick="openGallery('d4',0)"><img loading="lazy" decoding="async" src="d4_shop.jpg" alt="Shopping"/></div>
+          <div class="day-photo" onclick="openGallery('d4',1)"><img loading="lazy" decoding="async" src="d4_night.jpg" alt="Night Market"/></div>
+          <div class="day-photo" onclick="openGallery('d4',2)"><img loading="lazy" decoding="async" src="d4_mall.jpg" alt="Mall"/></div>
         </div>
       </div>
     </div>
@@ -434,7 +434,7 @@ footer a{color:var(--p);font-weight:700}
           <li>Arrive Bengaluru · Memories for a lifetime ✈️</li>
         </ul>
         <div class="day-photos" style="grid-template-columns:1fr">
-          <div class="day-photo wide" onclick="openGallery('d5',0)"><img src="d5_airport.jpg" alt="Airport"/></div>
+          <div class="day-photo wide" onclick="openGallery('d5',0)"><img loading="lazy" decoding="async" src="d5_airport.jpg" alt="Airport"/></div>
         </div>
       </div>
     </div>
@@ -450,9 +450,9 @@ footer a{color:var(--p);font-weight:700}
     <div class="addon-card">
       <div class="addon-head"><h3>🏝️ James Bond Island</h3><span class="addon-day-tag">Day 4</span></div>
       <div class="addon-photos">
-        <div class="addon-ph" onclick="openGallery('jb',0)"><img src="addon_jb1.jpg" alt="James Bond Island"/></div>
-        <div class="addon-ph" onclick="openGallery('jb',1)"><img src="addon_jb2.jpg" alt="Sea Cave"/></div>
-        <div class="addon-ph" onclick="openGallery('jb',2)"><img src="addon_jb3.jpg" alt="Floating Village"/></div>
+        <div class="addon-ph" onclick="openGallery('jb',0)"><img loading="lazy" decoding="async" src="addon_jb1.jpg" alt="James Bond Island"/></div>
+        <div class="addon-ph" onclick="openGallery('jb',1)"><img loading="lazy" decoding="async" src="addon_jb2.jpg" alt="Sea Cave"/></div>
+        <div class="addon-ph" onclick="openGallery('jb',2)"><img loading="lazy" decoding="async" src="addon_jb3.jpg" alt="Floating Village"/></div>
       </div>
       <div class="addon-prices">
         <div class="addon-pi"><div class="who">Child (4–10 yrs)</div><div class="how">₹4,500</div></div>
@@ -463,9 +463,9 @@ footer a{color:var(--p);font-weight:700}
     <div class="addon-card">
       <div class="addon-head"><h3>🏍️ Adventure Ride</h3><span class="addon-day-tag">Day 4</span></div>
       <div class="addon-photos">
-        <div class="addon-ph" onclick="openGallery('adv',0)"><img src="addon_atv.jpg" alt="ATV"/></div>
-        <div class="addon-ph" onclick="openGallery('adv',1)"><img src="addon_raft.jpg" alt="Rafting"/></div>
-        <div class="addon-ph" onclick="openGallery('adv',2)"><img src="addon_cave.jpg" alt="Cave"/></div>
+        <div class="addon-ph" onclick="openGallery('adv',0)"><img loading="lazy" decoding="async" src="addon_atv.jpg" alt="ATV"/></div>
+        <div class="addon-ph" onclick="openGallery('adv',1)"><img loading="lazy" decoding="async" src="addon_raft.jpg" alt="Rafting"/></div>
+        <div class="addon-ph" onclick="openGallery('adv',2)"><img loading="lazy" decoding="async" src="addon_cave.jpg" alt="Cave"/></div>
       </div>
       <div class="addon-prices">
         <div class="addon-pi"><div class="who">Child (4–10 yrs)</div><div class="how">₹3,500</div></div>
@@ -539,10 +539,10 @@ footer a{color:var(--p);font-weight:700}
   <div class="slbl">🏨 Stay & Meals</div>
   <div class="sh">Hotel &<br><span class="c">Breakfast.</span></div>
   <div class="hotel-wrap">
-    <div class="hotel-main" onclick="openGallery('hotel',0)"><img src="hotel_pool.png" alt="Pool"/><div class="itag">🏊 Rooftop Pool</div></div>
+    <div class="hotel-main" onclick="openGallery('hotel',0)"><img loading="lazy" decoding="async" src="hotel_pool.png" alt="Pool"/><div class="itag">🏊 Rooftop Pool</div></div>
     <div class="hotel-sub">
-      <div class="hotel-card" onclick="openGallery('hotel',1)"><img src="hotel_room.png" alt="Room"/><div class="itag">🛏️ Double Room</div></div>
-      <div class="hotel-card" onclick="openGallery('hotel',2)"><img src="hotel_bath.png" alt="Bath"/><div class="itag">🚿 En-Suite</div></div>
+      <div class="hotel-card" onclick="openGallery('hotel',1)"><img loading="lazy" decoding="async" src="hotel_room.png" alt="Room"/><div class="itag">🛏️ Double Room</div></div>
+      <div class="hotel-card" onclick="openGallery('hotel',2)"><img loading="lazy" decoding="async" src="hotel_bath.png" alt="Bath"/><div class="itag">🚿 En-Suite</div></div>
     </div>
   </div>
   <div class="perks">
@@ -553,9 +553,9 @@ footer a{color:var(--p);font-weight:700}
     <div class="perk">🍳 4 Breakfasts</div>
   </div>
   <div class="meal-row">
-    <div class="meal-ph" onclick="openGallery('food',0)"><img src="food_croissant.png" alt="Croissants"/><div class="meal-lbl">Croissants</div></div>
-    <div class="meal-ph" onclick="openGallery('food',1)"><img src="food_eggs.png" alt="Eggs"/><div class="meal-lbl">Hot Items</div></div>
-    <div class="meal-ph" onclick="openGallery('food',2)"><img src="food_juice.png" alt="Juices"/><div class="meal-lbl">Fresh Juices</div></div>
+    <div class="meal-ph" onclick="openGallery('food',0)"><img loading="lazy" decoding="async" src="food_croissant.png" alt="Croissants"/><div class="meal-lbl">Croissants</div></div>
+    <div class="meal-ph" onclick="openGallery('food',1)"><img loading="lazy" decoding="async" src="food_eggs.png" alt="Eggs"/><div class="meal-lbl">Hot Items</div></div>
+    <div class="meal-ph" onclick="openGallery('food',2)"><img loading="lazy" decoding="async" src="food_juice.png" alt="Juices"/><div class="meal-lbl">Fresh Juices</div></div>
   </div>
   <div class="meal-badges">
     <div class="mbg"><div class="mbg-n">4</div><h3>Breakfasts</h3></div>
@@ -570,21 +570,21 @@ footer a{color:var(--p);font-weight:700}
   <div class="gal-outer">
     <button class="gal-arrow" onclick="galMove(-1)">&#8249;</button>
     <div class="gal-track" id="galTrack">
-      <div class="gal-slide" onclick="openGallery('hap',0)"><img src="h1.jpg" alt=""/><div class="gal-cap">Jungceylon</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',1)"><img src="h2.jpg" alt=""/><div class="gal-cap">Happy Travellers</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',2)"><img src="h3.jpg" alt=""/><div class="gal-cap">Phi Phi Island</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',3)"><img src="h4.jpg" alt=""/><div class="gal-cap">Family Trip</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',4)"><img src="h5.jpg" alt=""/><div class="gal-cap">Island Vibes</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',5)"><img src="h6.jpg" alt=""/><div class="gal-cap">Old Phuket Town</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',6)"><img src="h7.jpg" alt=""/><div class="gal-cap">Maya Bay</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',7)"><img src="h8.jpg" alt=""/><div class="gal-cap">Phi Phi Lagoon</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',8)"><img src="h9.jpg" alt=""/><div class="gal-cap">Tiger Kingdom</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',9)"><img src="h10.jpg" alt=""/><div class="gal-cap">Tiger Kingdom</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',10)"><img src="h11.jpg" alt=""/><div class="gal-cap">Phuket Arrival</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',11)"><img src="h12.jpg" alt=""/><div class="gal-cap">Island Vibes</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',12)"><img src="h13.jpg" alt=""/><div class="gal-cap">Honey Farm</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',13)"><img src="h14.jpg" alt=""/><div class="gal-cap">Kairalitrails Family</div></div>
-      <div class="gal-slide" onclick="openGallery('hap',14)"><img src="h15.jpg" alt=""/><div class="gal-cap">Tiger Kingdom</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',0)"><img loading="lazy" decoding="async" src="h1.jpg" alt=""/><div class="gal-cap">Jungceylon</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',1)"><img loading="lazy" decoding="async" src="h2.jpg" alt=""/><div class="gal-cap">Happy Travellers</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',2)"><img loading="lazy" decoding="async" src="h3.jpg" alt=""/><div class="gal-cap">Phi Phi Island</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',3)"><img loading="lazy" decoding="async" src="h4.jpg" alt=""/><div class="gal-cap">Family Trip</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',4)"><img loading="lazy" decoding="async" src="h5.jpg" alt=""/><div class="gal-cap">Island Vibes</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',5)"><img loading="lazy" decoding="async" src="h6.jpg" alt=""/><div class="gal-cap">Old Phuket Town</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',6)"><img loading="lazy" decoding="async" src="h7.jpg" alt=""/><div class="gal-cap">Maya Bay</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',7)"><img loading="lazy" decoding="async" src="h8.jpg" alt=""/><div class="gal-cap">Phi Phi Lagoon</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',8)"><img loading="lazy" decoding="async" src="h9.jpg" alt=""/><div class="gal-cap">Tiger Kingdom</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',9)"><img loading="lazy" decoding="async" src="h10.jpg" alt=""/><div class="gal-cap">Tiger Kingdom</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',10)"><img loading="lazy" decoding="async" src="h11.jpg" alt=""/><div class="gal-cap">Phuket Arrival</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',11)"><img loading="lazy" decoding="async" src="h12.jpg" alt=""/><div class="gal-cap">Island Vibes</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',12)"><img loading="lazy" decoding="async" src="h13.jpg" alt=""/><div class="gal-cap">Honey Farm</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',13)"><img loading="lazy" decoding="async" src="h14.jpg" alt=""/><div class="gal-cap">Kairalitrails Family</div></div>
+      <div class="gal-slide" onclick="openGallery('hap',14)"><img loading="lazy" decoding="async" src="h15.jpg" alt=""/><div class="gal-cap">Tiger Kingdom</div></div>
     </div>
     <button class="gal-arrow" onclick="galMove(1)">&#8250;</button>
   </div>
@@ -618,7 +618,7 @@ footer a{color:var(--p);font-weight:700}
 
 <!-- FOOTER -->
 <footer>
-  <img class="footer-logo" src="logo.png" alt="KairaliTrails"/>
+  <img loading="eager" fetchpriority="high" class="footer-logo" src="logo.png" alt="KairaliTrails"/>
   <p>KAIRALITRAILS · PHUKET ISLAND RUSH 2026<br>
   BLR ✈ PHUKET · AUG 2–6, 2026 · DIRECT FLIGHT<br>
   <a href="https://www.kairalitrails.com" target="_blank">www.kairalitrails.com</a></p>
